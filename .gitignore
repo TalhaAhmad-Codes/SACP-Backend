@@ -1,0 +1,200 @@
+# =========================================================
+# GENERAL
+# =========================================================
+*.log
+*.tmp
+*.temp
+*.cache
+
+# =========================================================
+# ENVIRONMENT VARIABLES
+# =========================================================
+.env
+.env.*
+!.env.example
+
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# =========================================================
+# ASP.NET / C#
+# =========================================================
+bin/
+obj/
+
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+.vs/
+iisexpress/
+*.dbmdl
+
+# Rider
+.idea/
+
+# Test Results
+TestResults/
+*.trx
+
+# Publish
+publish/
+artifacts/
+
+# NuGet
+*.nupkg
+packages/
+!packages/build/
+.nuget/
+
+# Entity Framework
+*.edmx.diagram
+
+# Optional migrations
+**/Migrations/
+
+# =========================================================
+# DATABASES
+# =========================================================
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+# MongoDB
+mongo-data/
+mongodb-data/
+
+# PostgreSQL
+postgres-data/
+pgdata/
+
+# SQL Server
+*.mdf
+*.ldf
+
+# Redis
+dump.rdb
+appendonly.aof
+redis-data/
+
+# =========================================================
+# DOCKER / DEPLOYMENT
+# =========================================================
+docker-compose.override.yml
+docker-data/
+volumes/
+
+.azure/
+.aws/
+.aws-sam/
+.serverless/
+
+.publishsettings
+
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+deploy/
+release/
+
+# =========================================================
+# TESTING
+# =========================================================
+coverage/
+coverage.xml
+
+# =========================================================
+# REPORTS
+# =========================================================
+reports/
+exports/
+generated/
+
+# =========================================================
+# SECURITY
+# =========================================================
+jwt-secret.txt
+token.txt
+tokens/
+keys/
+
+*.pem
+*.key
+*.pfx
+*.cer
+*.crt
+
+# =========================================================
+# DOCUMENTATION / DESIGN TOOLS
+# =========================================================
+
+# Office temp files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+*.wbk
+
+# Draw.io
+*.drawio.bkp
+*.drawio.dtmp
+
+# PlantUML
+*.pu.out
+*.plantuml.png
+*.plantuml.svg
+
+# ERD Plus
+erd-export/
+erd-temp/
+
+# Figma
+figma-export/
+figma-temp/
+
+# Adobe XD
+*.xd~
+adobe-xd-temp/
+xd-export/
+
+# Generated diagrams
+diagrams/export/
+diagrams/generated/
+
+# PDF backups
+*.pdf.bak
+
+# =========================================================
+# IDEs
+# =========================================================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+.idea/
+*.iml
+
+# =========================================================
+# OS FILES
+# =========================================================
+Thumbs.db
+Desktop.ini
+.DS_Store
+*~
+
+# =========================================================
+# KEEP TRACKED
+# =========================================================
+!README.md
+!.gitignore
+!docker-compose.yml

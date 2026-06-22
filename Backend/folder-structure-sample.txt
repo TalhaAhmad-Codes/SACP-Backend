@@ -1,0 +1,169 @@
+Backend/
+│
+├── Features/
+│   │
+│   ├── Auth/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Validators/
+│   │   ├── Handlers/
+│   │   ├── Mappings/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── Users/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Validators/
+│   │   ├── Handlers/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── AcademicData/
+│   │   ├── Students/
+│   │   ├── Faculty/
+│   │   ├── Courses/
+│   │   ├── Departments/
+│   │   └── Enrollments/
+│   │
+│   ├── Templates/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Validators/
+│   │   ├── Handlers/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── Campaigns/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Validators/
+│   │   ├── Handlers/
+│   │   ├── Services/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── Notifications/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Handlers/
+│   │   ├── Services/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── AutomationRules/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Validators/
+│   │   ├── Handlers/
+│   │   ├── Services/
+│   │   ├── RuleEngine/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── Analytics/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Handlers/
+│   │   ├── Services/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── Chat/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Handlers/
+│   │   ├── Services/
+│   │   ├── Hubs/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   ├── Files/
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── DTOs/
+│   │   ├── Handlers/
+│   │   ├── Services/
+│   │   ├── Endpoints/
+│   │   └── Entities/
+│   │
+│   └── EmailClassification/
+│       ├── Commands/
+│       ├── Queries/
+│       ├── DTOs/
+│       ├── Handlers/
+│       ├── Services/
+│       ├── Endpoints/
+│       └── Entities/
+│
+├── Infrastructure/
+│   │
+│   ├── Persistence/
+│   │   ├── ApplicationDbContext.cs
+│   │   ├── Configurations/
+│   │   ├── Migrations/
+│   │   └── Seeders/
+│   │
+│   ├── Identity/
+│   │
+│   ├── Email/
+│   │
+│   ├── Realtime/
+│   │   └── SignalR/
+│   │
+│   ├── BackgroundJobs/
+│   │
+│   ├── Cache/
+│   │
+│   ├── AI/
+│   │   └── PythonClients/
+│   │
+│   ├── Storage/
+│   │
+│   └── ExternalServices/
+│
+├── Shared/
+│   │
+│   ├── Common/
+│   │   ├── Result.cs
+│   │   ├── PagedResult.cs
+│   │   └── Constants/
+│   │
+│   ├── Behaviors/
+│   │
+│   ├── Contracts/
+│   │
+│   ├── Middleware/
+│   │
+│   ├── Exceptions/
+│   │
+│   ├── Authorization/
+│   │
+│   ├── Extensions/
+│   │
+│   └── Helpers/
+│
+├── Configuration/
+│   │
+│   ├── JwtConfiguration.cs
+│   ├── DatabaseConfiguration.cs
+│   ├── RedisConfiguration.cs
+│   ├── HangfireConfiguration.cs
+│   ├── SignalRConfiguration.cs
+│   └── SwaggerConfiguration.cs
+│
+├── Controllers/
+│   └── (optional)
+│
+├── appsettings.json
+├── appsettings.Development.json
+├── Program.cs
+│
+└── Tests/

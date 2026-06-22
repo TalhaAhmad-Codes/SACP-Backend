@@ -1,0 +1,31 @@
+[Development Tools]
+.NET – Microsoft framework to develop modern cross-platform enterprise applications. [Online]. Available: https://dotnet.microsoft.com/
+Entity Framework Core – ORM developed by Microsoft to work with dotnet seamlessly. [Online]. Available: https://learn.microsoft.com/en-us/ef/core/
+
+[Deployment & Hosting Platforms]
+GitHub, Code hosting platform for version control and collaboration. [Online]. Available: https://github.com/
+
+[Software/Tools used to create, design, and develop various components of FYP]
+Figma - Collaborative UI/UX design tool. [Online] Available: https://www.figma.com/
+
+[Online Platforms + AI Tools]
+Open AI, ChatGPT – AI LLM. [Online]. Available: https://chat.openai.com/
+Reddit – Online communities’ platform for open discussions. [Online]. Available: https://www.reddit.com/
+Slack - Collaboration tool for communication in institutions. [Online] Available: https://slack.com/intl/en-gb/
+Microsoft Teams - An enterprise-grade communication platform. [Online] Available: https://www.microsoft.com/en-us
+Discord - A community-centric platform for communication. [Online] Available: https://discord.com/
+Rocket.CHAT - an open-source communication platform. [Online] Available: https://www.rocket.chat/
+MailChimp - A cloud-based marketing and email tool. [Online] Available: https://mailchimp.com/
+Twillio SendGrid - Platform for transactional emails. [Online] Available: https://www.twilio.com/en-us/sendgrid
+Braze - Customer engagement platform. [Online] Available: https://www.braze.com/
+Canvas LMS - Student notifications hub with LMS features. [Online] Available: https://www.canva.com/en_gb/education
+Moodle - An open-source chat platform. [Online] Available: https://moodle.org/
+TrueDialog - A multi-channel communication delivery platform. [Online] Available: https://www.truedialog.com/
+WhatsApp - A public messaging application. [Online] Available: https://www.whatsapp.com/
+WhatsApp Business - A public messaging application with additional features to WhatsApp. [Online] Available: https://whatsappbusiness.com/
+Spark Mail - Ai-based email service. [Online] Available: 
+https://sparkmailapp.com/
+SaneBox - Mail's tracking and prioritizing platform. [Online] Available: https://www.sanebox.com/
+Shortwave - AI-based advance communication platform. [Online] Available: https://www.shortwave.com/
+Microsoft Outlook - A platform for email communication by Microsoft. [Online] Available: https://www.microsoft.com/en/microsoft-365/outlook
+Work IQ - An intelligence layer in Microsoft Copilot for semantic understanding of business workflow. [Online] Available: https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/
