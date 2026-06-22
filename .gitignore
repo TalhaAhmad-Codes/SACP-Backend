@@ -198,3 +198,7 @@ Desktop.ini
 !README.md
 !.gitignore
 !docker-compose.yml
+
+# Cache
+.cache-loader/
+.sass-cache/
