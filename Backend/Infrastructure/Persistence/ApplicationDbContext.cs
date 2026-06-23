@@ -24,6 +24,7 @@ namespace Backend.Infrastructure.Persistence
         public DbSet<Institution> Institutions => Set<Institution>();
         public DbSet<Admin> Admins => Set<Admin>();
         public DbSet<FacultyMember> FacultyMembers => Set<FacultyMember>();
+        public DbSet<Student> Students => Set<Student>();
         public DbSet<Department> Departments => Set<Department>();
     }
 }

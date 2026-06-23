@@ -16,5 +16,9 @@ namespace Backend.Features.Academic.Models
         public Guid UserId { get; set; }
         public Guid DepartmentId { get; set; }
         public Guid InstitutionId { get; set; }
+
+        // * Relations
+        public ICollection<CourseAssignment> CourseAssignments { get; set; }
+        public ICollection<Attendance> Attendances { get; set; }
     }
 }

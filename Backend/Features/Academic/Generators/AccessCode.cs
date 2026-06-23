@@ -17,6 +17,7 @@ namespace Backend.Features.Academic.Generators
             Year = year;
         }
 
+        // ? This method takes DB context and some information and then generates a unique access code for the faculty member.
         public static AccessCode Generate(
             ApplicationDbContext context,
             DateOnly dateOfJoin,
@@ -35,8 +36,8 @@ namespace Backend.Features.Academic.Generators
             var count =
                 context
                     .FacultyMembers.AsQueryable()
-                    .AsNoTracking()
-                    .Where(fm => fm.DateOfJoining == dateOfJoin)
+                    .AsNoTracking() // ? Prevention of tracking to increase performance
+                    .Where(fm => fm.DateOfJoining.Year == dateOfJoin.Year)
                     .Count() + 1;
             var year = dateOfJoin.Year;
             return new AccessCode(label, count, year);
