@@ -1,4 +1,5 @@
-﻿using Backend.Features.Users.Models.Enums;
+﻿using Backend.Features.Academic.Models;
+using Backend.Features.Users.Models.Enums;
 using Backend.Features.Users.Models.ValueObjects;
 using Backend.Shared.Common;
 
@@ -13,7 +14,9 @@ namespace Backend.Features.Users.Models
         public UserRole Role { get; set; }
         public bool IsActive { get; set; }
 
-        // Relations
+        // * Relations
         public ICollection<RefreshToken> RefreshTokens { get; set; }
+        public Admin Admin { get; set; }
+        public FacultyMember FacultyMember { get; set; }
     }
 }
