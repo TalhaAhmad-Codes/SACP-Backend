@@ -1,3 +1,4 @@
+using Backend.Features.Academic.Models;
 using Backend.Features.Users.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,15 @@ namespace Backend.Infrastructure.Persistence
             base.OnModelCreating(modelBuilder);
         }
 
+        // ? Auth
         public DbSet<User> Users => Set<User>();
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+
+        // ? Academic
+        public DbSet<Institution> Institutions => Set<Institution>();
+        public DbSet<Admin> Admins => Set<Admin>();
+        public DbSet<FacultyMember> FacultyMembers => Set<FacultyMember>();
+        public DbSet<Student> Students => Set<Student>();
+        public DbSet<Department> Departments => Set<Department>();
     }
 }
