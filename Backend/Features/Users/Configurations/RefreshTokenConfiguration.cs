@@ -13,7 +13,7 @@ namespace Backend.Features.Users.Configurations
             builder.HasKey(rt => rt.Id);
 
             // * Token
-            builder.Property(rt => rt.Token).IsRequired().HasMaxLength(MaxValue.Token);
+            builder.Property(rt => rt.Token).IsRequired().HasMaxLength(MaxValue.RefreshToken);
             builder.HasIndex(rt => rt.Token).IsUnique();
 
             // * Expiry date

@@ -37,9 +37,7 @@ namespace Backend.Features.Users.Configurations
             builder.Property(u => u.IsActive).IsRequired().HasDefaultValue(true);
 
             // * Refresh Tokens - Relationship
-            builder
-                .HasMany(u => u.RefreshTokens)
-                .WithOne(rt => rt.User);
+            builder.HasMany(u => u.RefreshTokens).WithOne(rt => rt.User);
         }
     }
 }
