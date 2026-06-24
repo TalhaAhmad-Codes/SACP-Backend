@@ -8,8 +8,11 @@ namespace Backend.Features.Academic.Models
         public int ObtainedMarks { get; set; }
         public ExamResultStatus Status { get; set; }
 
-        // * Foreign Keys
+        // * Foreign Key Constraints
         public Guid StudentId { get; set; }
+        public Student Student { get; set; }
+
         public Guid ExamId { get; set; }
+        public Exam Exam { get; set; }
     }
 }

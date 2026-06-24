@@ -10,8 +10,9 @@ namespace Backend.Features.Academic.Models
         public int CreditHours { get; set; }
         public Semester Semester { get; set; }
 
-        // * Foriegn Key
+        // * Foriegn Key Constraint
         public Guid DepartmentId { get; set; }
+        public Department Department { get; set; }
 
         // * Relations
         public CourseAssignment CourseAssignment { get; set; }

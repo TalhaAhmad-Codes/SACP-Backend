@@ -7,8 +7,9 @@ namespace Backend.Features.Academic.Models
         public string Name { get; set; }
         public int Label { get; set; } = 0;
 
-        // * Foriegn Key
+        // * Foriegn Key Constraint
         public Guid InstitutionId { get; set; }
+        public Institution Institution { get; set; }
 
         // * Relations
         public ICollection<FacultyMember> FacultyMembers { get; set; }

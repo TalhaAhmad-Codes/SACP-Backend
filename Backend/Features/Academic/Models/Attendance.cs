@@ -7,11 +7,16 @@ namespace Backend.Features.Academic.Models
     {
         public AttendanceType Type { get; set; }
         public AttendanceStatus Status { get; set; }
-        public DateOnly DateOfMarking { get; set; }
+        public DateOnly DateOfMarking { get; set; } = DateOnly.FromDateTime(DateTime.Now);
 
-        // * Foreign Keys
+        // * Foreign Key Constraints
         public Guid CourseId { get; set; }
+        public Course Course { get; set; }
+
         public Guid FacultyId { get; set; }
+        public FacultyMember FacultyMember { get; set; }
+
         public Guid StudentId { get; set; }
+        public Student Student { get; set; }
     }
 }

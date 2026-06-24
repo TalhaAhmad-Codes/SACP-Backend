@@ -7,8 +7,11 @@ namespace Backend.Features.Academic.Models
     {
         public CourseAssignmentStatus Status { get; set; }
 
-        // * Foreign Keys
+        // * Foreign Key Constraints
         public Guid CourseId { get; set; }
+        public Course Course { get; set; }
+
         public Guid FacultyId { get; set; }
+        public FacultyMember FacultyMember { get; set; }
     }
 }

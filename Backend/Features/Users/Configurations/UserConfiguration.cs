@@ -10,18 +10,12 @@ namespace Backend.Features.Users.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            // * Primary key
-            builder.HasKey(u => u.Id);
-
             // * Avatar
             builder.OwnsOne(
                 u => u.Avatar,
                 avatar =>
                 {
-                    avatar
-                        .Property(a => a.Data)
-                        .HasColumnType("bytea")
-                        .HasColumnName("AvatarData");
+                    avatar.Property(a => a.Data).HasColumnType("bytea").HasColumnName("AvatarData");
 
                     avatar.Property(a => a.ContentType).HasColumnName("AvatarContentType");
                 }
@@ -50,6 +44,15 @@ namespace Backend.Features.Users.Configurations
 
             // * Refresh Tokens - Relationship
             builder.HasMany(u => u.RefreshTokens).WithOne(rt => rt.User);
+
+            // * Admin - Relationship
+            builder.HasOne(u => u.Admin).WithOne(a => a.User);
+
+            // * Faculty Member - Relationship
+            builder.HasOne(u => u.FacultyMember).WithOne(fm => fm.User);
+
+            // * Student - Relationship
+            builder.HasOne(u => u.Student).WithOne(s => s.User);
         }
     }
 }

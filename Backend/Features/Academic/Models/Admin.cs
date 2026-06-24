@@ -8,12 +8,11 @@ namespace Backend.Features.Academic.Models
     {
         public Name Name { get; set; }
 
-        // * Foriegn Keys
+        // * Foriegn Key Constraints
         public Guid UserId { get; set; }
-        public Guid InstitutionId { get; set; }
-
-        // * Relations
         public User User { get; set; }
+
+        public Guid InstitutionId { get; set; }
         public Institution Institution { get; set; }
     }
 }

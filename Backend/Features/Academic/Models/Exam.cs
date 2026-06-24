@@ -9,8 +9,9 @@ namespace Backend.Features.Academic.Models
         public DateOnly DateOfConduct { get; set; }
         public int TotalMarks { get; set; }
 
-        // * Foreign Key
+        // * Foreign Key Constraint
         public Guid CourseId { get; set; }
+        public Course Course { get; set; }
 
         // * Relation
         public ICollection<ExamResult> ExamResults { get; set; }

@@ -9,9 +9,6 @@ namespace Backend.Features.Academic.Configurations
     {
         public void Configure(EntityTypeBuilder<Admin> builder)
         {
-            // * Id
-            builder.HasKey(a => a.Id);
-
             // * Name
             builder.OwnsOne(
                 a => a.Name,

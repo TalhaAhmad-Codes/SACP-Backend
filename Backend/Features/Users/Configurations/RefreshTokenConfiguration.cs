@@ -9,9 +9,6 @@ namespace Backend.Features.Users.Configurations
     {
         public void Configure(EntityTypeBuilder<RefreshToken> builder)
         {
-            // * Primary key
-            builder.HasKey(rt => rt.Id);
-
             // * Token
             builder.Property(rt => rt.Token).IsRequired().HasMaxLength(MaxValue.RefreshToken);
             builder.HasIndex(rt => rt.Token).IsUnique();
