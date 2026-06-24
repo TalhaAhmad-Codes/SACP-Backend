@@ -14,7 +14,18 @@ namespace Backend.Features.Users.Configurations
             builder.HasKey(u => u.Id);
 
             // * Avatar
-            builder.Property(u => u.Avatar).HasColumnType("varbinary(max)");
+            builder.OwnsOne(
+                u => u.Avatar,
+                avatar =>
+                {
+                    avatar
+                        .Property(a => a.Data)
+                        .HasColumnType("bytea")
+                        .HasColumnName("AvatarData");
+
+                    avatar.Property(a => a.ContentType).HasColumnName("AvatarContentType");
+                }
+            );
 
             // * Username
             builder.Property(u => u.Username).HasMaxLength(MaxValue.Username).IsRequired();
@@ -30,6 +41,7 @@ namespace Backend.Features.Users.Configurations
             builder
                 .Property(u => u.Role)
                 .HasConversion<string>()
+                .HasColumnName("Role")
                 .IsRequired()
                 .HasDefaultValue(UserRole.Student);
 

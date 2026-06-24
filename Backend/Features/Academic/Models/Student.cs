@@ -6,7 +6,7 @@ namespace Backend.Features.Academic.Models
 {
     public sealed class Student : BaseEntity
     {
-        public Name Name { get; set; }
+        // public Name Name { get; set; }
         public string FatherName { get; set; }
         public Gender Gender { get; set; }
         public DateOnly DateOfBirth { get; set; }

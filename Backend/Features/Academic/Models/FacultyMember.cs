@@ -6,7 +6,7 @@ namespace Backend.Features.Academic.Models
 {
     public sealed class FacultyMember : BaseEntity
     {
-        public Name Name { get; set; }
+        // public Name Name { get; set; }
         public FacultyJobRole JobRole { get; set; }
         public DateOnly DateOfJoining { get; set; }
         public FacultyStatus Status { get; set; }
