@@ -12,7 +12,7 @@ namespace Backend.Features.Users.Models
         public string Email { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
         public UserRole Role { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         // * Relations
         public ICollection<RefreshToken> RefreshTokens { get; set; }

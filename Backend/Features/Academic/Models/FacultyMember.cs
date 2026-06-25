@@ -12,6 +12,7 @@ namespace Backend.Features.Academic.Models
         public DateOnly DateOfJoining { get; set; }
         public FacultyStatus Status { get; set; }
         public string AccessCode { get; set; }
+        public string Email { get; set; }
 
         // * Foriegn Key Constraints
         public Guid UserId { get; set; }

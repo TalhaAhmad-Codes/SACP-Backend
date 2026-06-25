@@ -12,8 +12,8 @@ namespace Backend.Features.Academic.Models
         public Gender Gender { get; set; }
         public DateOnly DateOfBirth { get; set; }
         public DateOnly DateOfAdmission { get; set; }
-        public string Email { get; set; }
         public int RollNumber { get; set; }
+        public string Email { get; set; }
         public string RegistrationNumber { get; set; }
 
         // * Foriegn Key Constraints
