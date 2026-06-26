@@ -16,6 +16,9 @@ namespace Backend.Features.Academic.Models
         public string Email { get; set; }
         public string RegistrationNumber { get; set; }
 
+        public int Age => Math.Abs(DateOfBirth.Year - DateTime.Now.Year);
+        public int YearOfAdmission => DateOfAdmission.Year;
+
         // * Foriegn Key Constraints
         public Guid UserId { get; set; }
         public User User { get; set; }
@@ -24,7 +27,7 @@ namespace Backend.Features.Academic.Models
         public Department Department { get; set; }
 
         // * Relations
-        public ICollection<Course> Courses { get; set; }
+        public ICollection<CourseEnrollment> CourseEnrollments { get; set; }
         public ICollection<Attendance> Attendances { get; set; }
         public ICollection<ExamResult> ExamResults { get; set; }
     }
