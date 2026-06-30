@@ -68,7 +68,9 @@ namespace Backend.Features.Academic.Validators.Student
                 .WithMessage("Roll number must be greater than 0");
 
             // * Email
-            RuleFor(s => s.Email).EmailAddress().WithMessage("Email format is invalid");
+            RuleFor(s => s.Email)
+                .EmailAddress()
+                .WithMessage("Email format is invalid");
 
             // * Registration Number
             RuleFor(s => s.RegistrationNumber)
@@ -77,10 +79,14 @@ namespace Backend.Features.Academic.Validators.Student
                 .When(s => s.RegistrationNumber is not null);
 
             // * Department Id
-            RuleFor(s => s.DepartmentId).NotEmpty().WithMessage("Department must be provided");
+            RuleFor(s => s.DepartmentId)
+                .NotEmpty()
+                .WithMessage("Department must be provided");
 
             // * User Id
-            RuleFor(s => s.UserId).NotEmpty().WithMessage("User must be provided");
+            RuleFor(s => s.UserId)
+                .NotEmpty()
+                .WithMessage("User must be provided");
         }
     }
 }

@@ -9,13 +9,10 @@ namespace Backend.Features.Academic.Queries.Student.GetStudent
         Gender? Gender,
         DateOnly? FromDateOfBirth,
         DateOnly? ToDateOfBirth,
-        int? FromAge,
-        int? ToAge,
         DateOnly? FromDateOfAdmission,
         DateOnly? ToDateOfAdmission,
-        int? FromYearOfAdmission,
-        int? ToYearOfAdmission,
-        int? RollNumber,
+        int? FromRollNumber,
+        int? ToRollNumber,
         Guid? DepartmentId
     );
 }
