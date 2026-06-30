@@ -61,6 +61,26 @@ namespace Backend.Features.Academic.Validators.Student
             RuleFor(s => s.DateOfAdmission)
                 .LessThanOrEqualTo(DateOnly.FromDateTime(DateTime.Now))
                 .WithMessage("Date of admission can't be in future");
+
+            // * Roll Number
+            RuleFor(s => s.RollNumber)
+                .GreaterThan(0)
+                .WithMessage("Roll number must be greater than 0");
+
+            // * Email
+            RuleFor(s => s.Email).EmailAddress().WithMessage("Email format is invalid");
+
+            // * Registration Number
+            RuleFor(s => s.RegistrationNumber)
+                .NotEmpty()
+                .WithMessage("Registration number must not be empty")
+                .When(s => s.RegistrationNumber is not null);
+
+            // * Department Id
+            RuleFor(s => s.DepartmentId).NotEmpty().WithMessage("Department must be provided");
+
+            // * User Id
+            RuleFor(s => s.UserId).NotEmpty().WithMessage("User must be provided");
         }
     }
 }
