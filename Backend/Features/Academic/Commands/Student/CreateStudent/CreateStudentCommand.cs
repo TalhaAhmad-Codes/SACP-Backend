@@ -13,7 +13,6 @@ namespace Backend.Features.Academic.Commands.Student.CreateStudent
         int RollNumber,
         string Email,
         string? RegistrationNumber,
-        Guid DepartmentId,
-        Guid UserId
+        Guid DepartmentId
     ) : IRequest<Guid>;
 }

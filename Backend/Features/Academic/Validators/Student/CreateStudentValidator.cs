@@ -82,11 +82,6 @@ namespace Backend.Features.Academic.Validators.Student
             RuleFor(s => s.DepartmentId)
                 .NotEmpty()
                 .WithMessage("Department must be provided");
-
-            // * User Id
-            RuleFor(s => s.UserId)
-                .NotEmpty()
-                .WithMessage("User must be provided");
         }
     }
 }

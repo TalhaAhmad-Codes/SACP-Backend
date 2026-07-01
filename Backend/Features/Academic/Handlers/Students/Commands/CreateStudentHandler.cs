@@ -51,7 +51,6 @@ namespace Backend.Features.Academic.Handlers.Students.Commands
                 RollNumber = request.RollNumber,
                 Email = request.Email.Trim(),
                 RegistrationNumber = regNumber,
-                UserId = request.UserId,
                 DepartmentId = request.DepartmentId,
             };
 
