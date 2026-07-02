@@ -10,6 +10,7 @@ builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
 // builder.Services.AddRedis(builder.Configuration);
 builder.Services.AddHangfireServices(builder.Configuration);
+builder.Services.AddProviders();
 
 var app = builder.Build();
 
