@@ -42,10 +42,10 @@ namespace Backend.Features.Auth.Handlers.Commands
             var isRegistered = await ExistsByEmailAsync(request.Email, cancellationToken);
 
             if (isRegistered)
-                throw new DomainException("User with the given email is already registered");
+                throw new NotExistsException("User with the given email is already registered");
 
             if (request.Password != request.ConfirmPassword)
-                throw new DomainException("Password doesn't match");
+                throw new NotExistsException("Password doesn't match");
 
             var user = new User()
             {
@@ -62,7 +62,7 @@ namespace Backend.Features.Auth.Handlers.Commands
             );
 
             if (doesInstitutionExist)
-                throw new DomainException("Institution with this name is already registered");
+                throw new NotExistsException("Institution with this name is already registered");
 
             var institution = new Institution() { Name = request.InstitutionName.Trim() };
 

@@ -1,32 +1,29 @@
 using Backend.Features.Users.Commands.DeleteUser;
+using Backend.Features.Users.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
-using Backend.Shared.Exceptions;
 using MediatR;
 
 namespace Backend.Features.Users.Handlers.Commands
 {
-    public sealed class DeleteUserHandler : IRequestHandler<DeleteUserCommand, bool>
+    public sealed class DeleteUserHandler : IRequestHandler<DeleteUserCommand, Unit>
     {
         private readonly ApplicationDbContext _context;
+        private readonly IUserProvider _userProvider;
 
-        public DeleteUserHandler(ApplicationDbContext context)
+        public DeleteUserHandler(ApplicationDbContext context, IUserProvider userProvider)
         {
             _context = context;
+            _userProvider = userProvider;
         }
 
-        public async Task<bool> Handle(
-            DeleteUserCommand request,
-            CancellationToken cancellationToken
-        )
+        public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await _context.Users.FindAsync(request.UserId);
-
-            if (user is null)
-                return false;
+            var user = await _userProvider.GetByIdAsync(request.UserId);
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync(cancellationToken);
-            return true;
+            
+            return Unit.Value;
         }
     }
 }

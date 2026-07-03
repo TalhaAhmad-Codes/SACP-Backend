@@ -5,4 +5,4 @@ namespace Backend.Features.Academic.Queries.Institution.GetInstitution;
 
 public sealed record GetInstitutionByIdQuery(
     Guid Id
-) : IRequest<InstitutionResponse?>;
+) : IRequest<InstitutionResponse>;

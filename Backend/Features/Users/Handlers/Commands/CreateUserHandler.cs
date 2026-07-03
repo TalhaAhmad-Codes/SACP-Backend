@@ -1,35 +1,34 @@
 using Backend.Features.Users.Commands.CreateUser;
 using Backend.Features.Users.Models;
+using Backend.Features.Users.Providers.Interfaces;
+using Backend.Features.Users.Responses;
 using Backend.Infrastructure.Identity;
 using Backend.Infrastructure.Persistence;
 using Backend.Shared.Exceptions;
+using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Users.Handlers.Commands
 {
-    public sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, Guid>
+    public sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, UserResponse>
     {
         private readonly ApplicationDbContext _context;
+        private readonly IUserProvider _userProvider;
 
-        public CreateUserHandler(ApplicationDbContext context)
+        public CreateUserHandler(ApplicationDbContext context, IUserProvider userProvider)
         {
             _context = context;
+            _userProvider = userProvider;
         }
 
-        private async Task<bool> ExistsByEmail(string email, CancellationToken cancellationToken) =>
-            await _context.Users.AnyAsync(u => u.Email == email, cancellationToken);
-
-        public async Task<Guid> Handle(
-            CreateUserCommand request,
-            CancellationToken cancellationToken
-        )
+        public async Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var existsByEmail = await ExistsByEmail(request.Email, cancellationToken);
+            var existsByEmail = await _userProvider.ExistsByEmailAsync(request.Email, cancellationToken);
 
             if (existsByEmail)
             {
-                throw new DomainException("User with this email is already registered");
+                throw new InvalidRequestException("User is already registered");
             }
 
             var user = new User()
@@ -43,7 +42,7 @@ namespace Backend.Features.Users.Handlers.Commands
             await _context.AddAsync(user);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return user.Id;
+            return user.Adapt<UserResponse>();
         }
     }
 }

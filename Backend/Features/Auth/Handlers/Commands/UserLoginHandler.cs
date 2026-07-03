@@ -29,10 +29,10 @@ namespace Backend.Features.Auth.Handlers.Commands
         {
             var user =
                 await GetByEmailAsync(request.Email, cancellationToken)
-                ?? throw new DomainException("Email is not registered");
+                ?? throw new NotExistsException("Email is not registered");
 
             if (!PasswordHasher.Verify(request.Password, user.PasswordHash))
-                throw new DomainException("Incorrect password");
+                throw new NotExistsException("Incorrect password");
 
             return user.Id;
         }

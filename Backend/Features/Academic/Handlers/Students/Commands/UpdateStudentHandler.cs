@@ -31,7 +31,7 @@ public sealed class UpdateStudentHandler : IRequestHandler<UpdateStudentCommand,
             var existsByEmail = await ExistsByEmailAsync(request.Email.Trim(), cancellationToken);
         
             if (existsByEmail)
-                throw new DomainException("Student with given email already exists");            
+                throw new NotExistsException("Student with given email already exists");            
         }
         
         // * Updating the student

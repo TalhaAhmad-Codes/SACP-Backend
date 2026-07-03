@@ -1,4 +1,5 @@
 ﻿using Backend.Infrastructure.Persistence;
+using Backend.Shared.Exceptions;
 using Backend.Shared.Providers.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,13 @@ public abstract class GeneralProvider<T> : IGeneralProvider<T> where T : class
         _dbSet = _context.Set<T>();
     }
 
-    public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default) =>
-        await _dbSet.FindAsync(id, cancellationToken);
+    public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var entity = await _dbSet.FindAsync(id, cancellationToken);
+
+        if (entity is null)
+            throw new NotExistsException();
+
+        return entity;
+    }
 }

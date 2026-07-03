@@ -2,6 +2,4 @@
 
 namespace Backend.Features.Academic.Commands.Institution.DeleteInstitution;
 
-public sealed record DeleteInstitutionCommand(
-    Guid Id
-) : IRequest<bool>;
+public sealed record DeleteInstitutionCommand(Guid Id) : IRequest<Unit>;

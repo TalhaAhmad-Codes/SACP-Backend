@@ -5,7 +5,6 @@ using Backend.Features.Users.Commands.DeleteUser;
 using Backend.Features.Users.Commands.UpdateUser;
 using Backend.Features.Users.Queries.GetUserById;
 using Backend.Features.Users.Queries.GetUsers;
-using Backend.Shared.Common.Responses;
 using Backend.Shared.Controllers;
 using Backend.Shared.Exceptions;
 using MediatR;
@@ -13,98 +12,105 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Features.Users.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public sealed class UserController : BaseController
     {
         public UserController(IMediator mediator)
             : base(mediator) { }
 
         [HttpGet]
-        public async Task<ActionResult> GetUsersAsync(
-            [FromQuery] GetUsersQuery request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> GetUsersAsync([FromQuery] GetUsersQuery request, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(request, cancellationToken);
             return Ok(result);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult> GetUserByIdAsync(
-            GetUserByIdQuery request,
-            CancellationToken cancellationToken
-        )
-        {
-            var user = await _mediator.Send(request, cancellationToken);
-
-            if (user is null)
-            {
-                return BadRequest("User doesn't exist");
-            }
-
-            return Ok(user);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> CreateUserAsync(
-            CreateUserCommand request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> GetUserByIdAsync(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             try
             {
-                var userId = await _mediator.Send(request, cancellationToken);
-
-                return CreatedAtAction(
-                    nameof(GetUserByIdAsync),
-                    new { userId },
-                    new EntityCreatedResponse(userId)
-                );
+                var user = await _mediator.Send(request, cancellationToken);
+                return Ok(user);
             }
-            catch (DomainException ex)
+            catch (NotExistsException)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUserAsync(CreateUserCommand request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var user = await _mediator.Send(request, cancellationToken);
+                return Ok(user);
+            }
+            catch (InvalidRequestException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (NotExistsException)
+            {
+                return NotFound();
             }
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteUserAsync(
-            DeleteUserCommand request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> DeleteUserAsync(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var success = await _mediator.Send(request, cancellationToken);
-            return success ? Ok("User has been deleted successfully") : NotFound();
+            try
+            {
+                await _mediator.Send(request, cancellationToken);
+                return Ok("User has been deleted successfully");
+            }
+            catch (NotExistsException)
+            {
+                return NotFound();
+            }
         }
 
         [HttpPatch("update/username")]
-        public async Task<ActionResult> UpdateUsernameAsync(
-            UpdateUserUsernameCommand request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> UpdateUsernameAsync(UpdateUserUsernameCommand request, CancellationToken cancellationToken)
         {
-            var success = await _mediator.Send(request, cancellationToken);
-            return success ? Ok("Username has been updated successfully") : NotFound();
+            try
+            {
+                await _mediator.Send(request, cancellationToken);
+                return Ok("Username has been updated successfully");
+            }
+            catch (NotExistsException)
+            {
+                return NotFound();
+            }
         }
 
         [HttpPatch("update/activate")]
-        public async Task<ActionResult> ActivateUserAsync(
-            ActivateUserCommand request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> ActivateUserAsync(ActivateUserCommand request, CancellationToken cancellationToken)
         {
-            var success = await _mediator.Send(request, cancellationToken);
-            return success ? Ok("User has been activated successfully") : NotFound();
+            try
+            {
+                await _mediator.Send(request, cancellationToken);
+                return Ok("User has been activated successfully");
+            }
+            catch (NotExistsException ex)
+            {
+                return NotFound();
+            }
         }
 
         [HttpPatch("update/deactivate")]
-        public async Task<ActionResult> DeactivateUserAsync(
-            DeactivateUserCommand request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> DeactivateUserAsync(DeactivateUserCommand request, CancellationToken cancellationToken)
         {
-            var success = await _mediator.Send(request, cancellationToken);
-            return success ? Ok("User has been deactivated successfully") : NotFound();
+            try
+            {
+                await _mediator.Send(request, cancellationToken);
+                return Ok("User has been deactivated successfully");
+            }
+            catch (NotExistsException)
+            {
+                return NotFound();
+            }
         }
     }
 }

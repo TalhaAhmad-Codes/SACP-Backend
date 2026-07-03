@@ -1,3 +1,4 @@
+using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
 using Backend.Shared.Exceptions;
 
@@ -10,12 +11,7 @@ namespace Backend.Features.Academic.Generators
         public int YearOfAdmission { get; }
         public int RollNumber { get; }
 
-        private RegistrationNumber(
-            string institutionLabel,
-            string departmentLabel,
-            int yearOfAdmission,
-            int rollNumber
-        )
+        private RegistrationNumber(string institutionLabel, string departmentLabel, int yearOfAdmission, int rollNumber)
         {
             InstitutionLabel = institutionLabel;
             DepartmentLabel = departmentLabel;
@@ -24,24 +20,19 @@ namespace Backend.Features.Academic.Generators
         }
 
         // ? This method generates a unique registration number for the student
-        public static async Task<RegistrationNumber> Generate(
-            ApplicationDbContext context,
-            Guid departmentId,
-            int yearOfAdmission,
-            int rollNumber
-        )
+        public static async Task<RegistrationNumber> Generate(IInstitutionProvider institutionProvider, Guid departmentId, int yearOfAdmission, int rollNumber)
         {
             // * Get Department
-            var department = await context.Departments.FindAsync(departmentId);
+            /*var department = await context.Departments.FindAsync(departmentId);
 
             if (department is null)
-                throw new DomainException("Department doesn't exist");
+                throw new NotExistsException("Department doesn't exist");
 
             // * Get Institution
             var institution = await context.Institutions.FindAsync(department.InstitutionId);
 
             if (institution is null)
-                throw new DomainException("Institution doesn't exist");
+                throw new NotExistsException("Institution doesn't exist");
 
             // * Generate the registration number
             var institutionLabel = institution.Name.Substring(0, 3);
@@ -54,7 +45,8 @@ namespace Backend.Features.Academic.Generators
                 rollNumber
             );
 
-            return registrationNumber;
+            return registrationNumber;*/
+            throw new NotImplementedException();
         }
 
         // * Method to get the number as string

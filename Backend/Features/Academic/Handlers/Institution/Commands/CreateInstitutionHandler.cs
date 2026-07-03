@@ -2,21 +2,20 @@
 using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Features.Academic.Responses;
 using Backend.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 using Backend.Shared.Exceptions;
 using Mapster;
 using MediatR;
 
-namespace Backend.Features.Academic.Handlers.Institution.Command;
+namespace Backend.Features.Academic.Handlers.Institution.Commands;
 
 public sealed class CreateInstitutionHandler : IRequestHandler<CreateInstitutionCommand, InstitutionResponse>
 {
-    private readonly ApplicationDbContext _context;
+    //private readonly ApplicationDbContext _context;
     private readonly IInstitutionProvider _institutionProvider;
 
     public CreateInstitutionHandler(ApplicationDbContext context, IInstitutionProvider institutionProvider)
     {
-        _context = context;
+        //_context = context;
         _institutionProvider = institutionProvider;
     }
 
@@ -25,7 +24,7 @@ public sealed class CreateInstitutionHandler : IRequestHandler<CreateInstitution
         var existsByName = await _institutionProvider.ExistsByNameAsync(request.Name.Trim(), cancellationToken);
 
         if (existsByName)
-            throw new DomainException("Institution is already registered");
+            throw new InvalidRequestException("Institution is already registered");
 
         var instutiton = new Models.Institution()
         {

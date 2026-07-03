@@ -42,12 +42,12 @@ namespace Backend.Features.Auth.Handlers.Commands
             var faculty = await GetFacultyByEmailAsync(request.Email.Trim(), cancellationToken);
 
             if (faculty is null)
-                throw new DomainException(
+                throw new NotExistsException(
                     "There's no record of a faculty member having this email"
                 );
 
             if (faculty.AccessCode != request.AccessCode.Trim())
-                throw new DomainException("The given access code is invalid");
+                throw new NotExistsException("The given access code is invalid");
 
             // * Create User Profile
             var isUserRegistered = await UserExistsByEmailAsync(
@@ -56,10 +56,10 @@ namespace Backend.Features.Auth.Handlers.Commands
             );
 
             if (isUserRegistered)
-                throw new DomainException("User with the given email is already registered");
+                throw new NotExistsException("User with the given email is already registered");
 
             if (request.Password != request.ConfirmPassword)
-                throw new DomainException("Password doesn't match");
+                throw new NotExistsException("Password doesn't match");
 
             var user = new User()
             {

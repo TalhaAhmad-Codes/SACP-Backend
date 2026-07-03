@@ -18,10 +18,7 @@ namespace Backend.Features.Users.Handlers.Queries
             _context = context;
         }
 
-        public async Task<PagedResult<UserResponse>> Handle(
-            GetUsersQuery request,
-            CancellationToken cancellationToken
-        )
+        public async Task<PagedResult<UserResponse>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
         {
             var query = _context.Users.AsNoTracking().AsQueryable();
 

@@ -7,7 +7,7 @@ namespace Backend.Features.Users.Validators
     {
         public ActivateUserValidator()
         {
-            RuleFor(u => u.UserId).NotEmpty().WithMessage("User id is required");
+            RuleFor(u => u.Id).NotEmpty().WithMessage("User id is required");
         }
     }
 }
