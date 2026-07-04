@@ -15,7 +15,7 @@ namespace Backend.Features.Users.Models
         public User User { get; set; } = null!;
 
 
-        // Derived properties
+        // * Derived properties
         public bool IsExpired => DateTime.UtcNow >= ExpiresAt;
 
         public bool IsActive => !IsRevoked && !IsExpired;

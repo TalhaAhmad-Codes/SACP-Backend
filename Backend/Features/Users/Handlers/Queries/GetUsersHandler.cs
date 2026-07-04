@@ -18,10 +18,7 @@ namespace Backend.Features.Users.Handlers.Queries
             _context = context;
         }
 
-        public async Task<PagedResult<UserResponse>> Handle(
-            GetUsersQuery request,
-            CancellationToken cancellationToken
-        )
+        public async Task<PagedResult<UserResponse>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
         {
             var query = _context.Users.AsNoTracking().AsQueryable();
 
@@ -35,7 +32,6 @@ namespace Backend.Features.Users.Handlers.Queries
             if (request.Filter.IsActive.HasValue)
                 query = query.Where(u => u.IsActive == request.Filter.IsActive);
 
-            var count = await query.CountAsync();
             // * Paging
             var users = await query
                 .OrderBy(u => u.Username)

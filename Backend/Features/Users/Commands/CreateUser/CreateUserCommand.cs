@@ -1,4 +1,5 @@
 using Backend.Features.Users.Models.Enums;
+using Backend.Features.Users.Responses;
 using MediatR;
 
 namespace Backend.Features.Users.Commands.CreateUser
@@ -8,5 +9,5 @@ namespace Backend.Features.Users.Commands.CreateUser
         string Email,
         string Password,
         UserRole Role
-    ) : IRequest<Guid>;
+    ) : IRequest<UserResponse>;
 }
