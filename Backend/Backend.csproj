@@ -7,6 +7,53 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Academic\Admin\**" />
+    <Compile Remove="Features\Academic\Attendance\**" />
+    <Compile Remove="Features\Academic\CourseAssignment\**" />
+    <Compile Remove="Features\Academic\CourseEnrollment\**" />
+    <Compile Remove="Features\Academic\Course\**" />
+    <Compile Remove="Features\Academic\Department\**" />
+    <Compile Remove="Features\Academic\ExamResult\**" />
+    <Compile Remove="Features\Academic\Exam\**" />
+    <Compile Remove="Features\Academic\Faculty\**" />
+    <Compile Remove="Features\Academic\Institution\**" />
+    <Compile Remove="Features\Academic\Student\**" />
+    <Content Remove="Features\Academic\Admin\**" />
+    <Content Remove="Features\Academic\Attendance\**" />
+    <Content Remove="Features\Academic\CourseAssignment\**" />
+    <Content Remove="Features\Academic\CourseEnrollment\**" />
+    <Content Remove="Features\Academic\Course\**" />
+    <Content Remove="Features\Academic\Department\**" />
+    <Content Remove="Features\Academic\ExamResult\**" />
+    <Content Remove="Features\Academic\Exam\**" />
+    <Content Remove="Features\Academic\Faculty\**" />
+    <Content Remove="Features\Academic\Institution\**" />
+    <Content Remove="Features\Academic\Student\**" />
+    <EmbeddedResource Remove="Features\Academic\Admin\**" />
+    <EmbeddedResource Remove="Features\Academic\Attendance\**" />
+    <EmbeddedResource Remove="Features\Academic\CourseAssignment\**" />
+    <EmbeddedResource Remove="Features\Academic\CourseEnrollment\**" />
+    <EmbeddedResource Remove="Features\Academic\Course\**" />
+    <EmbeddedResource Remove="Features\Academic\Department\**" />
+    <EmbeddedResource Remove="Features\Academic\ExamResult\**" />
+    <EmbeddedResource Remove="Features\Academic\Exam\**" />
+    <EmbeddedResource Remove="Features\Academic\Faculty\**" />
+    <EmbeddedResource Remove="Features\Academic\Institution\**" />
+    <EmbeddedResource Remove="Features\Academic\Student\**" />
+    <None Remove="Features\Academic\Admin\**" />
+    <None Remove="Features\Academic\Attendance\**" />
+    <None Remove="Features\Academic\CourseAssignment\**" />
+    <None Remove="Features\Academic\CourseEnrollment\**" />
+    <None Remove="Features\Academic\Course\**" />
+    <None Remove="Features\Academic\Department\**" />
+    <None Remove="Features\Academic\ExamResult\**" />
+    <None Remove="Features\Academic\Exam\**" />
+    <None Remove="Features\Academic\Faculty\**" />
+    <None Remove="Features\Academic\Institution\**" />
+    <None Remove="Features\Academic\Student\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.2" />
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="8.0.1" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />

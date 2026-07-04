@@ -1,5 +1,5 @@
-﻿using Backend.Features.Academic.Commands.Institution.UpdateInstitution;
-using Backend.Features.Academic.Queries.Institution.GetInstitution;
+﻿using Backend.Features.Academic.Models.Institution.Commands.UpdateInstitution;
+using Backend.Features.Academic.Models.Institution.Queries.GetInstitution;
 using Backend.Shared.Controllers;
 using Backend.Shared.Exceptions;
 using MediatR;

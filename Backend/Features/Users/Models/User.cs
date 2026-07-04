@@ -1,4 +1,6 @@
-﻿using Backend.Features.Academic.Models;
+﻿using Backend.Features.Academic.Models.Admin;
+using Backend.Features.Academic.Models.FacultyMember;
+using Backend.Features.Academic.Models.Student;
 using Backend.Features.Users.Models.Enums;
 using Backend.Features.Users.Models.ValueObjects;
 using Backend.Shared.Common;

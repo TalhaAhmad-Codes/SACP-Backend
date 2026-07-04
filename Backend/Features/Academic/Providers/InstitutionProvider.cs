@@ -1,4 +1,4 @@
-﻿using Backend.Features.Academic.Models;
+﻿using Backend.Features.Academic.Models.Institution;
 using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
 using Backend.Shared.Providers;

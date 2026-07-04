@@ -1,4 +1,5 @@
 using Backend.Features.Academic.Models;
+using Backend.Features.Academic.Models.Student;
 using Backend.Features.Auth.Commands.Register;
 using Backend.Features.Users.Models;
 using Backend.Features.Users.Models.Enums;

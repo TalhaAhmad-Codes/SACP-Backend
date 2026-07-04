@@ -1,5 +1,5 @@
-using Backend.Features.Academic.Models;
-using Backend.Features.Academic.Models.Enums;
+using Backend.Features.Academic.Models.Attendance;
+using Backend.Features.Academic.Models.Attendance.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

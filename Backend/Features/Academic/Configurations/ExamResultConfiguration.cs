@@ -1,4 +1,4 @@
-using Backend.Features.Academic.Models;
+using Backend.Features.Academic.Models.ExamResult;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

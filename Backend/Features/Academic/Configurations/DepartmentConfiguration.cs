@@ -1,4 +1,4 @@
-using Backend.Features.Academic.Models;
+using Backend.Features.Academic.Models.Department;
 using Backend.Shared.Common.FixedValue;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
