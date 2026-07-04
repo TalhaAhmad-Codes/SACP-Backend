@@ -3,5 +3,5 @@ using MediatR;
 
 namespace Backend.Features.Academic.Models.Student.Queries.GetStudent
 {
-    public sealed record GetStudentByIdQuery(Guid Id) : IRequest<StudentResponse?>;
+    public sealed record GetStudentByIdQuery(Guid Id) : IRequest<StudentResponse>;
 }

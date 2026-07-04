@@ -14,5 +14,5 @@ namespace Backend.Features.Academic.Models.Student.Commands.UpdateStudent
         int RollNumber,
         string Email,
         Guid DepartmentId
-    ) : IRequest<bool>;
+    ) : IRequest<Unit>;
 }

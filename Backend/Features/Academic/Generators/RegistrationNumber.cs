@@ -20,19 +20,13 @@ namespace Backend.Features.Academic.Generators
         }
 
         // ? This method generates a unique registration number for the student
-        public static async Task<RegistrationNumber> Generate(IInstitutionProvider institutionProvider, Guid departmentId, int yearOfAdmission, int rollNumber)
+        public static async Task<RegistrationNumber> Generate(IInstitutionProvider institutionProvider, IDepartmentProvider departmentProvider, Guid departmentId, int yearOfAdmission, int rollNumber)
         {
             // * Get Department
-            /*var department = await context.Departments.FindAsync(departmentId);
-
-            if (department is null)
-                throw new NotExistsException("Department doesn't exist");
+            var department = await departmentProvider.GetByIdAsync(departmentId);
 
             // * Get Institution
-            var institution = await context.Institutions.FindAsync(department.InstitutionId);
-
-            if (institution is null)
-                throw new NotExistsException("Institution doesn't exist");
+            var institution = await institutionProvider.GetByIdAsync(department.InstitutionId);
 
             // * Generate the registration number
             var institutionLabel = institution.Name.Substring(0, 3);
@@ -45,8 +39,7 @@ namespace Backend.Features.Academic.Generators
                 rollNumber
             );
 
-            return registrationNumber;*/
-            throw new NotImplementedException();
+            return registrationNumber;
         }
 
         // * Method to get the number as string
