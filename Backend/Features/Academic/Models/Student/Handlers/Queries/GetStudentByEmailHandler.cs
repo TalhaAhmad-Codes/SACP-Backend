@@ -1,5 +1,6 @@
 ﻿using Backend.Features.Academic.Models.Student.Queries.GetStudent;
 using Backend.Features.Academic.Models.Student.Responses;
+using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
 using Mapster;
 using MediatR;

@@ -5,6 +5,11 @@ namespace Backend.Shared.Common
     {
         public Guid Id { get; protected set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedAt { get; set; } = null;
+        /*public DateTime? UpdatedAt { get; set; } = null;
+
+        protected void MarkUpdate()
+        {
+            UpdatedAt = DateTime.UtcNow;
+        }*/
     }
 }
