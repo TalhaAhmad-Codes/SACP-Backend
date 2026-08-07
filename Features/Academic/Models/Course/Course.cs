@@ -1,4 +1,3 @@
-using Backend.Features.Academic.Models.Attendance;
 using Backend.Features.Academic.Models.Course.Enums;
 using Backend.Shared.Common;
 
@@ -20,5 +19,6 @@ namespace Backend.Features.Academic.Models.Course
         public ICollection<CourseEnrollment.CourseEnrollment> CourseEnrollments { get; set; }
         public ICollection<Attendance.Attendance> Attendances { get; set; }
         public ICollection<Exam.Exam> Exams { get; set; }
+        public Lecture.Lecture Lecture { get; set; }
     }
 }

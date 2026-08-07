@@ -8,6 +8,7 @@ using Backend.Features.Academic.Models.Exam;
 using Backend.Features.Academic.Models.ExamResult;
 using Backend.Features.Academic.Models.FacultyMember;
 using Backend.Features.Academic.Models.Institution;
+using Backend.Features.Academic.Models.Lecture;
 using Backend.Features.Academic.Models.Student;
 using Backend.Features.Users.Models;
 using Microsoft.EntityFrameworkCore;
@@ -42,5 +43,6 @@ namespace Backend.Infrastructure.Persistence
         public DbSet<Attendance> Attendances => Set<Attendance>();
         public DbSet<Exam> Exams => Set<Exam>();
         public DbSet<ExamResult> ExamResults => Set<ExamResult>();
+        public DbSet<Lecture> Lectures => Set<Lecture>();
     }
 }
