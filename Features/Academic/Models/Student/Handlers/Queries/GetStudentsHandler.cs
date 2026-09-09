@@ -1,7 +1,6 @@
 ﻿using Backend.Features.Academic.Models.Student.Queries.GetStudent;
 using Backend.Features.Academic.Models.Student.Responses;
 using Backend.Infrastructure.Persistence;
-using Backend.Shared.Common.Pagination;
 using Backend.Shared.Extensions;
 using Mapster;
 using MediatR;
@@ -9,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Academic.Models.Student.Handlers.Queries;
 
-public sealed class GetStudentsHandler : IRequestHandler<GetStudentsQuery, PagedResult<StudentResponse>>
+public sealed class GetStudentsHandler
+    : IRequestHandler<GetStudentsQuery, PagedResultDto<StudentResponse>>
 {
     private readonly ApplicationDbContext _context;
 
@@ -18,15 +18,17 @@ public sealed class GetStudentsHandler : IRequestHandler<GetStudentsQuery, Paged
         _context = context;
     }
 
-    public async Task<PagedResult<StudentResponse>> Handle(GetStudentsQuery request,
-        CancellationToken cancellationToken)
+    public async Task<PagedResult<StudentResponse>> Handle(
+        GetStudentsQuery request,
+        CancellationToken cancellationToken
+    )
     {
         var query = _context.Students.AsNoTracking().AsQueryable();
-        
+
         // * Applying filters
         if (request.Filter.DepartmentId.HasValue)
             query = query.Where(s => s.DepartmentId == request.Filter.DepartmentId);
-        
+
         if (request.Filter.FirstName is not null)
             query = query.Where(s => s.Name.FirstName.StartsWith(request.Filter.FirstName.Trim()));
 
@@ -56,7 +58,7 @@ public sealed class GetStudentsHandler : IRequestHandler<GetStudentsQuery, Paged
 
         if (request.Filter.ToRollNumber.HasValue)
             query = query.Where(s => s.RollNumber <= request.Filter.ToRollNumber);
-        
+
         // * Paging
         var students = await query
             .OrderBy(u => u.RollNumber)

@@ -16,13 +16,16 @@ namespace Backend.Features.Users.Handlers.Commands
             _userProvider = userProvider;
         }
 
-        public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(
+            DeleteUserCommand request,
+            CancellationToken cancellationToken
+        )
         {
-            var user = await _userProvider.GetByIdAsync(request.UserId);
+            var user = await _userProvider.GetByIdAsync(request.Id);
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync(cancellationToken);
-            
+
             return Unit.Value;
         }
     }

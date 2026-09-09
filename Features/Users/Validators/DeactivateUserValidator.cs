@@ -1,13 +1,11 @@
 using Backend.Features.Users.Commands.DeactiveUser;
-using FluentValidation;
+using Backend.Shared.Validators;
 
 namespace Backend.Features.Users.Validators
 {
-    public sealed class DeactivateUserValidator : AbstractValidator<DeactivateUserCommand>
+    public sealed class DeactivateUserValidator : BaseValidator<DeactivateUserCommand>
     {
         public DeactivateUserValidator()
-        {
-            RuleFor(u => u.UserId).NotEmpty().WithMessage("User id is required");
-        }
+            : base() { }
     }
 }

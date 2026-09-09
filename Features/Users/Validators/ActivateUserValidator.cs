@@ -1,13 +1,11 @@
 using Backend.Features.Users.Commands.ActiveUser;
-using FluentValidation;
+using Backend.Shared.Validators;
 
 namespace Backend.Features.Users.Validators
 {
-    public sealed class ActivateUserValidator : AbstractValidator<ActivateUserCommand>
+    public sealed class ActivateUserValidator : BaseValidator<ActivateUserCommand>
     {
         public ActivateUserValidator()
-        {
-            RuleFor(u => u.Id).NotEmpty().WithMessage("User id is required");
-        }
+            : base() { }
     }
 }

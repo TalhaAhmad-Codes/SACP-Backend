@@ -19,14 +19,20 @@ namespace Backend.Features.Users.Controllers
             : base(mediator) { }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsersAsync([FromQuery] GetUsersQuery request, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetUsersAsync(
+            [FromQuery] GetUsersQuery request,
+            CancellationToken cancellationToken
+        )
         {
             var result = await _mediator.Send(request, cancellationToken);
             return Ok(result);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetUserByIdAsync(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetUserByIdAsync(
+            GetUserByIdQuery request,
+            CancellationToken cancellationToken
+        )
         {
             try
             {
@@ -40,7 +46,10 @@ namespace Backend.Features.Users.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUserAsync(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUserAsync(
+            CreateUserCommand request,
+            CancellationToken cancellationToken
+        )
         {
             try
             {
@@ -58,7 +67,10 @@ namespace Backend.Features.Users.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteUserAsync(DeleteUserCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> DeleteUserAsync(
+            DeleteUserCommand request,
+            CancellationToken cancellationToken
+        )
         {
             try
             {
@@ -72,7 +84,10 @@ namespace Backend.Features.Users.Controllers
         }
 
         [HttpPatch("update/username")]
-        public async Task<IActionResult> UpdateUsernameAsync(UpdateUserUsernameCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateUsernameAsync(
+            UpdateUsernameCommand request,
+            CancellationToken cancellationToken
+        )
         {
             try
             {
@@ -86,7 +101,10 @@ namespace Backend.Features.Users.Controllers
         }
 
         [HttpPatch("update/activate")]
-        public async Task<IActionResult> ActivateUserAsync(ActivateUserCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> ActivateUserAsync(
+            ActivateUserCommand request,
+            CancellationToken cancellationToken
+        )
         {
             try
             {
@@ -100,7 +118,10 @@ namespace Backend.Features.Users.Controllers
         }
 
         [HttpPatch("update/deactivate")]
-        public async Task<IActionResult> DeactivateUserAsync(DeactivateUserCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> DeactivateUserAsync(
+            DeactivateUserCommand request,
+            CancellationToken cancellationToken
+        )
         {
             try
             {

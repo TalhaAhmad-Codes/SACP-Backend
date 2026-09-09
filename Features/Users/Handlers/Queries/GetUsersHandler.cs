@@ -1,7 +1,7 @@
 using Backend.Features.Users.Queries.GetUsers;
 using Backend.Features.Users.Responses;
 using Backend.Infrastructure.Persistence;
-using Backend.Shared.Common.Pagination;
+using Backend.Shared.Common.DTOs;
 using Backend.Shared.Extensions;
 using Mapster;
 using MediatR;
@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Users.Handlers.Queries
 {
-    public sealed class GetUsersHandler : IRequestHandler<GetUsersQuery, PagedResult<UserResponse>>
+    public sealed class GetUsersHandler
+        : IRequestHandler<GetUsersQuery, PagedResultDto<UserResponse>>
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,21 +19,26 @@ namespace Backend.Features.Users.Handlers.Queries
             _context = context;
         }
 
-        public async Task<PagedResult<UserResponse>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResultDto<UserResponse>> Handle(
+            GetUsersQuery request,
+            CancellationToken cancellationToken
+        )
         {
-            var query = _context.Users.AsNoTracking().AsQueryable();
+            var query = _context.Users.AsNoTracking();
 
-            // * Applying filters
-            if (request.Filter.SearchUsername is not null)
-                query = query.Where(u => u.Username.StartsWith(request.Filter.SearchUsername));
+            // Applying filters
+            if (request.Username is not null)
+                query = query.Where(u =>
+                    u.Username.StartsWith(request.Username, StringComparison.OrdinalIgnoreCase)
+                );
 
-            if (request.Filter.Role.HasValue)
-                query = query.Where(u => u.Role == request.Filter.Role);
+            if (request.Role.HasValue)
+                query = query.Where(u => u.Role == request.Role);
 
-            if (request.Filter.IsActive.HasValue)
-                query = query.Where(u => u.IsActive == request.Filter.IsActive);
+            if (request.IsActive.HasValue)
+                query = query.Where(u => u.IsActive == request.IsActive);
 
-            // * Paging
+            // Paging
             var users = await query
                 .OrderBy(u => u.Username)
                 .ProjectToType<UserResponse>()

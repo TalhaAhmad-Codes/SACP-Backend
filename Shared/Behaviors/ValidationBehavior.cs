@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Backend.Shared.Behaviors
 {
-    // ? This class is a MediatR pipeline behavior that performs validation on incoming requests using FluentValidation.
+    // This class is a MediatR pipeline behavior that performs validation on incoming requests using FluentValidation.
     public sealed class ValidationBehavior<TRequest, TResponse>
         : IPipelineBehavior<TRequest, TResponse>
         where TRequest : notnull
@@ -15,14 +15,14 @@ namespace Backend.Shared.Behaviors
             _validators = validators;
         }
 
-        // ? This method is called for each request passing through the MediatR pipeline. It validates the request using all registered validators and throws a ValidationException if any validation failures occur.
+        // This method is called for each request passing through the MediatR pipeline. It validates the request using all registered validators and throws a ValidationException if any validation failures occur.
         public async Task<TResponse> Handle(
             TRequest request,
             CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next
         )
         {
-            // * If there are no validators for the request type, simply continue to the next behavior or handler in the pipeline.
+            // If there are no validators for the request type, simply continue to the next behavior or handler in the pipeline.
             if (!_validators.Any())
             {
                 return await next();

@@ -7,7 +7,6 @@ using Backend.Infrastructure.Persistence;
 using Backend.Shared.Exceptions;
 using Mapster;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Users.Handlers.Commands
 {
@@ -22,9 +21,15 @@ namespace Backend.Features.Users.Handlers.Commands
             _userProvider = userProvider;
         }
 
-        public async Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<UserResponse> Handle(
+            CreateUserCommand request,
+            CancellationToken cancellationToken
+        )
         {
-            var existsByEmail = await _userProvider.ExistsByEmailAsync(request.Email, cancellationToken);
+            var existsByEmail = await _userProvider.ExistsByEmailAsync(
+                request.Email,
+                cancellationToken
+            );
 
             if (existsByEmail)
             {

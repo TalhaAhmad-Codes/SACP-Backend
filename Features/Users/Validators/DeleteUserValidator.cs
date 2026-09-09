@@ -1,13 +1,11 @@
 using Backend.Features.Users.Commands.DeleteUser;
-using FluentValidation;
+using Backend.Shared.Validators;
 
 namespace Backend.Features.Users.Validators
 {
-    public sealed class DeleteUserValidator : AbstractValidator<DeleteUserCommand>
+    public sealed class DeleteUserValidator : BaseValidator<DeleteUserCommand>
     {
         public DeleteUserValidator()
-        {
-            RuleFor(u => u.UserId).NotEmpty().WithMessage("User id is required");
-        }
+            : base() { }
     }
 }

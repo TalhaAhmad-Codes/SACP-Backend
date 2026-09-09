@@ -1,20 +1,22 @@
 using Backend.Features.Users.Queries.GetUsers;
+using Backend.Shared.Common;
 using Backend.Shared.Common.FixedValue;
+using Backend.Shared.Extensions;
+using Backend.Shared.Validators;
 using FluentValidation;
 
 namespace Backend.Features.Users.Validators
 {
-    public sealed class GetUsersValidator : AbstractValidator<GetUsersQuery>
+    public sealed class GetUsersValidator : BasePagedValidator<GetUsersQuery>
     {
         public GetUsersValidator()
+            : base()
         {
-            RuleFor(u => u.PageNumber)
-                .GreaterThanOrEqualTo(MinValue.PageNumber)
-                .WithMessage($"Page number must be {MinValue.PageNumber} or greater");
+            RuleFor(u => u.Username)
+                .StringMinMax("Username", 1, MaxValue.Username)
+                .Unless(u => string.IsNullOrEmpty(u.Username));
 
-            RuleFor(u => u.PageSize)
-                .GreaterThanOrEqualTo(MinValue.PageSize)
-                .WithMessage($"Page size must be {MinValue.PageSize} or greater");
+            RuleFor(u => u.Role).IsInEnum().WithMessage(Message.InvalidEnum("Role"));
         }
     }
 }

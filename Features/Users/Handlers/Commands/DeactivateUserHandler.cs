@@ -16,9 +16,12 @@ namespace Backend.Features.Users.Handlers.Commands
             _userProvider = userProvider;
         }
 
-        public async Task<Unit> Handle(DeactivateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(
+            DeactivateUserCommand request,
+            CancellationToken cancellationToken
+        )
         {
-            var user = await _userProvider.GetByIdAsync(request.UserId);
+            var user = await _userProvider.GetByIdAsync(request.Id);
 
             user.IsActive = false;
             _context.Users.Update(user);

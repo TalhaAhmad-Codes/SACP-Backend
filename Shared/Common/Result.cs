@@ -1,6 +1,6 @@
 namespace Backend.Shared.Common
 {
-    // ? It's base class for Result<T> and Result, so it can be used for both success and failure cases.
+    // It's base class for Result<T> and Result, so it can be used for both success and failure cases.
     public class Result
     {
         public bool IsSuccess { get; }
@@ -14,10 +14,10 @@ namespace Backend.Shared.Common
             Error = error;
         }
 
-        // * Factory methods for creating success and failure results.
+        // Factory methods for creating success and failure results.
         public static Result Success() => new(true, null);
 
-        // * Factory method for creating a failure result with an error.
+        // Factory method for creating a failure result with an error.
         public static Result Failure(Error error) => new(false, error);
     }
 }

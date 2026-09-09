@@ -10,7 +10,7 @@ namespace Backend.Features.Users.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            // * Avatar
+            // Avatar
             builder.OwnsOne(
                 u => u.Avatar,
                 avatar =>
@@ -21,17 +21,17 @@ namespace Backend.Features.Users.Configurations
                 }
             );
 
-            // * Username
+            // Username
             builder.Property(u => u.Username).HasMaxLength(MaxValue.Username).IsRequired();
 
-            // * Email
+            // Email
             builder.Property(u => u.Email).HasMaxLength(MaxValue.Email).IsRequired();
             builder.HasIndex(u => u.Email).IsUnique();
 
-            // * Password hash
+            // Password hash
             builder.Property(u => u.PasswordHash).IsRequired();
 
-            // * Role
+            // Role
             builder
                 .Property(u => u.Role)
                 .HasConversion<string>()
@@ -39,19 +39,19 @@ namespace Backend.Features.Users.Configurations
                 .IsRequired()
                 .HasDefaultValue(UserRole.Student);
 
-            // * IsActive
+            // IsActive
             builder.Property(u => u.IsActive).IsRequired().HasDefaultValue(true);
 
-            // * Refresh Tokens - Relationship
+            // Refresh Tokens - Relationship
             builder.HasMany(u => u.RefreshTokens).WithOne(rt => rt.User);
 
-            // * Admin - Relationship
+            // Admin - Relationship
             builder.HasOne(u => u.Admin).WithOne(a => a.User);
 
-            // * Faculty Member - Relationship
+            // Faculty Member - Relationship
             builder.HasOne(u => u.FacultyMember).WithOne(fm => fm.User);
 
-            // * Student - Relationship
+            // Student - Relationship
             builder.HasOne(u => u.Student).WithOne(s => s.User);
         }
     }

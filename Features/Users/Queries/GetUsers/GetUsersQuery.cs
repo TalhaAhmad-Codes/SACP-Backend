@@ -1,9 +1,14 @@
+using Backend.Features.Users.Models.Enums;
 using Backend.Features.Users.Responses;
-using Backend.Shared.Common.Pagination;
+using Backend.Shared.Common.DTOs;
 using MediatR;
 
 namespace Backend.Features.Users.Queries.GetUsers
 {
-    public sealed record GetUsersQuery(UserFilter Filter, int PageNumber = 1, int PageSize = 10)
-        : IRequest<PagedResult<UserResponse>>;
+    public sealed class GetUsersQuery : BasePagedQuery, IRequest<PagedResultDto<UserResponse>>
+    {
+        public string? Username { get; init; } = null;
+        public UserRole? Role { get; init; } = null;
+        public bool? IsActive { get; init; } = null;
+    }
 }
