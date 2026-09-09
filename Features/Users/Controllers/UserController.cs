@@ -2,7 +2,7 @@ using Backend.Features.Users.Commands.ActiveUser;
 using Backend.Features.Users.Commands.CreateUser;
 using Backend.Features.Users.Commands.DeactiveUser;
 using Backend.Features.Users.Commands.DeleteUser;
-using Backend.Features.Users.Commands.UpdateUser;
+using Backend.Features.Users.Commands.UpdateUser.Username;
 using Backend.Features.Users.Queries.GetUserById;
 using Backend.Features.Users.Queries.GetUsers;
 using Backend.Shared.Controllers;

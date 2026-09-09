@@ -45,14 +45,14 @@ namespace Backend.Features.Users.Configurations
             // Refresh Tokens - Relationship
             builder.HasMany(u => u.RefreshTokens).WithOne(rt => rt.User);
 
-            // Admin - Relationship
+            /*// Admin - Relationship
             builder.HasOne(u => u.Admin).WithOne(a => a.User);
 
             // Faculty Member - Relationship
             builder.HasOne(u => u.FacultyMember).WithOne(fm => fm.User);
 
             // Student - Relationship
-            builder.HasOne(u => u.Student).WithOne(s => s.User);
+            builder.HasOne(u => u.Student).WithOne(s => s.User);*/
         }
     }
 }

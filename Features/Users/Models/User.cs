@@ -1,7 +1,4 @@
-﻿using Backend.Features.Academic.Models.Admin;
-using Backend.Features.Academic.Models.FacultyMember;
-using Backend.Features.Academic.Models.Student;
-using Backend.Features.Users.Models.Enums;
+﻿using Backend.Features.Users.Models.Enums;
 using Backend.Features.Users.Models.ValueObjects;
 using Backend.Shared.Common;
 
@@ -18,8 +15,8 @@ namespace Backend.Features.Users.Models
 
         // * Relations
         public ICollection<RefreshToken> RefreshTokens { get; set; }
-        public Admin Admin { get; set; }
+        /*public Admin Admin { get; set; }
         public FacultyMember? FacultyMember { get; set; }
-        public Student? Student { get; set; }
+        public Student? Student { get; set; }*/
     }
 }

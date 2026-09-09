@@ -1,0 +1,25 @@
+Academic
+├── Models
+|   |
+|   └── Admin
+|       ├── Admin.cs
+|       ├── Responses
+|       |   └── AdminResponse.cs
+|       ├── Commands
+|       |   └── CreateAdmin
+|       |       ├── CreateAdminCommand.cs
+|       | 	    ├── CreateAdminCommandHandler.cs
+|       | 	    └── CreateAdminCommandValidator.cs
+|       ├── Queries
+|       └── Enums
+├── Configurations
+|	└── AdminConfiguration.cs
+├── Controllers
+|	└── AdminController.cs
+├── Providers
+|	├── Interfaces
+|	|   └── IAdminProvider.cs
+|	└── AdminProvider.cs
+└── Generators
+	├── AccessCodeGenerator.cs
+	└── RegistrationNumberGenerator.cs

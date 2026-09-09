@@ -1,5 +1,3 @@
-using Backend.Features.Academic.Models;
-using Backend.Features.Academic.Models.Student;
 using Backend.Features.Auth.Commands.Register;
 using Backend.Features.Users.Models;
 using Backend.Features.Users.Models.Enums;
@@ -20,10 +18,10 @@ namespace Backend.Features.Auth.Handlers.Commands
             _context = context;
         }
 
-        private async Task<Student?> GetStudentByEmailAsync(
+        /*private async Task<Student?> GetStudentByEmailAsync(
             string email,
             CancellationToken cancellationToken
-        ) => await _context.Students.FirstOrDefaultAsync(s => s.Email == email, cancellationToken);
+        ) => await _context.Students.FirstOrDefaultAsync(s => s.Email == email, cancellationToken);*/
 
         private async Task<bool> UserExistsByEmailAsync(
             string email,
@@ -35,7 +33,8 @@ namespace Backend.Features.Auth.Handlers.Commands
             CancellationToken cancellationToken
         )
         {
-            // * Check registration number
+            throw new NotImplementedException();
+            /*// * Check registration number
             var student = await GetStudentByEmailAsync(request.Email.Trim(), cancellationToken);
 
             if (student is null)
@@ -70,7 +69,7 @@ namespace Backend.Features.Auth.Handlers.Commands
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return user.Id;
+            return user.Id;*/
         }
     }
 }
