@@ -5,6 +5,7 @@ namespace Backend.Shared.Extensions;
 
 public static class QueryableExtensions
 {
+    // Method to get paged result from an IQueryable<T> source
     public static async Task<PagedResultDto<T>> ToPagedResultAsync<T>(
         this IQueryable<T> query,
         int pageNumber,

@@ -23,6 +23,8 @@ namespace Backend.Features.Users.Commands.UpdateUser.Username
             var user = await _userProvider.GetByIdAsync(request.Id);
 
             user.Username = request.Username;
+            user.MarkUpdated();
+
             _context.Update(user);
             await _context.SaveChangesAsync(cancellationToken);
 

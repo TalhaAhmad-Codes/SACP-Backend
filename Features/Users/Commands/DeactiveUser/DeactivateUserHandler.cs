@@ -23,6 +23,8 @@ namespace Backend.Features.Users.Commands.DeactiveUser
             var user = await _userProvider.GetByIdAsync(request.Id);
 
             user.IsActive = false;
+            user.MarkUpdated();
+
             _context.Users.Update(user);
             await _context.SaveChangesAsync(cancellationToken);
 

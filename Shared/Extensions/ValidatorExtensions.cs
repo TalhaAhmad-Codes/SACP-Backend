@@ -1,4 +1,4 @@
-﻿using Backend.Shared.Common;
+﻿using Backend.Shared.Common.Utilities;
 using FluentValidation;
 
 namespace Backend.Shared.Extensions
@@ -6,11 +6,12 @@ namespace Backend.Shared.Extensions
     public static class ValidatorExtensions
     {
         public static IRuleBuilderOptions<T, Guid> RequiredId<T>(
-            this IRuleBuilder<T, Guid> ruleBuilder
+            this IRuleBuilder<T, Guid> ruleBuilder,
+            string property = "Id"
         )
             where T : notnull
         {
-            return ruleBuilder.NotEmpty().WithMessage(Message.NotEmpty("Id"));
+            return ruleBuilder.NotEmpty().WithMessage(Message.NotEmpty(property));
         }
 
         public static IRuleBuilderOptions<T, string> RequiredString<T>(

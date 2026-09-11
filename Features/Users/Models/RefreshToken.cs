@@ -1,4 +1,4 @@
-﻿using Backend.Shared.Common;
+﻿using Backend.Shared.Common.Entities;
 
 namespace Backend.Features.Users.Models
 {
@@ -13,7 +13,6 @@ namespace Backend.Features.Users.Models
         public bool IsRevoked { get; set; }
 
         public User User { get; set; } = null!;
-
 
         // * Derived properties
         public bool IsExpired => DateTime.UtcNow >= ExpiresAt;

@@ -23,6 +23,8 @@ namespace Backend.Features.Users.Commands.ActiveUser
             var user = await _userProvider.GetByIdAsync(request.Id, cancellationToken);
 
             user.IsActive = true;
+            user.MarkUpdated();
+
             _context.Users.Update(user);
             await _context.SaveChangesAsync(cancellationToken);
 

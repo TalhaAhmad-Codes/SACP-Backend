@@ -1,5 +1,4 @@
-using Backend.Shared.Common;
-using Backend.Shared.Common.FixedValue;
+using Backend.Shared.Common.Utilities;
 using Backend.Shared.Extensions;
 using Backend.Shared.Validators;
 using FluentValidation;

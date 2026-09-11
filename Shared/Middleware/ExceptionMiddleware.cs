@@ -46,6 +46,10 @@ namespace Backend.Shared.Middleware
                     await context.Response.WriteAsJsonAsync(problem);
                     break;
                 }
+                //case InvalidDataException invalidDataException:
+                //{
+                //    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                //}
 
                 default:
                 {

@@ -1,6 +1,5 @@
-﻿using Backend.Shared.Common;
-using Backend.Shared.Common.DTOs;
-using Backend.Shared.Common.FixedValue;
+﻿using Backend.Shared.Common.DTOs;
+using Backend.Shared.Common.Utilities;
 using FluentValidation;
 
 namespace Backend.Shared.Validators

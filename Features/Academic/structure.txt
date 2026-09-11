@@ -1,7 +1,7 @@
 Academic
 ├── Models
 |   |
-|   └── Admin
+|   └── Admins
 |       ├── Admin.cs
 |       ├── Responses
 |       |   └── AdminResponse.cs
@@ -10,8 +10,7 @@ Academic
 |       |       ├── CreateAdminCommand.cs
 |       | 	    ├── CreateAdminCommandHandler.cs
 |       | 	    └── CreateAdminCommandValidator.cs
-|       ├── Queries
-|       └── Enums
+|       └── Queries
 ├── Configurations
 |	└── AdminConfiguration.cs
 ├── Controllers

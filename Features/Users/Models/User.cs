@@ -1,6 +1,6 @@
 ﻿using Backend.Features.Users.Models.Enums;
 using Backend.Features.Users.Models.ValueObjects;
-using Backend.Shared.Common;
+using Backend.Shared.Common.Entities;
 
 namespace Backend.Features.Users.Models
 {

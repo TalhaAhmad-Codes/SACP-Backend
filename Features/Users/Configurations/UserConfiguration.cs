@@ -1,6 +1,6 @@
 ﻿using Backend.Features.Users.Models;
 using Backend.Features.Users.Models.Enums;
-using Backend.Shared.Common.FixedValue;
+using Backend.Shared.Common.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

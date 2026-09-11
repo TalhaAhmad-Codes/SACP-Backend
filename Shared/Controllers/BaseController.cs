@@ -1,3 +1,5 @@
+using Backend.Features.Academic.Models.Institutions.Queries.GetInstitutionById;
+using Backend.Shared.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

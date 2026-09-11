@@ -1,3 +1,5 @@
+using Backend.Features.Academic.Models.Departments;
+using Backend.Features.Academic.Models.Institutions;
 using Backend.Features.Users.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,11 +22,11 @@ namespace Backend.Infrastructure.Persistence
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
         /* <----- Academic -----> */
-        /*public DbSet<Institution> Institutions => Set<Institution>();
-        public DbSet<Admin> Admins => Set<Admin>();
+        public DbSet<Institution> Institutions => Set<Institution>();
+        public DbSet<Department> Departments => Set<Department>();
+        /*public DbSet<Admin> Admins => Set<Admin>();
         public DbSet<FacultyMember> FacultyMembers => Set<FacultyMember>();
         public DbSet<Student> Students => Set<Student>();
-        public DbSet<Department> Departments => Set<Department>();
         public DbSet<Course> Courses => Set<Course>();
         public DbSet<CourseEnrollment> CourseEnrollments => Set<CourseEnrollment>();
         public DbSet<CourseAssignment> CourseAssignments => Set<CourseAssignment>();

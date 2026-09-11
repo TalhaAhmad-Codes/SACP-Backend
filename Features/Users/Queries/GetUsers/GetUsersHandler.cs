@@ -26,10 +26,8 @@ namespace Backend.Features.Users.Queries.GetUsers
             var query = _context.Users.AsNoTracking();
 
             // Applying filters
-            if (request.Username is not null)
-                query = query.Where(u =>
-                    u.Username.StartsWith(request.Username, StringComparison.OrdinalIgnoreCase)
-                );
+            if (!string.IsNullOrWhiteSpace(request.Username))
+                query = query.Where(u => EF.Functions.ILike(u.Username, $"{request.Username}%"));
 
             if (request.Role.HasValue)
                 query = query.Where(u => u.Role == request.Role);
