@@ -4,7 +4,6 @@ using Backend.Features.Academic.Models.Departments.Commands.UpdateDepartment;
 using Backend.Features.Academic.Models.Departments.Queries.GetDepartmentById;
 using Backend.Features.Academic.Models.Departments.Queries.GetDepartments;
 using Backend.Shared.Controllers;
-using Backend.Shared.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,20 +27,15 @@ namespace Backend.Features.Academic.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetByIdAsync(
-            [FromBody] GetDepartmentByIdQuery request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> GetByIdAsync(CancellationToken cancellationToken)
         {
-            try
+            var request = new GetDepartmentByIdQuery
             {
-                var department = await _mediator.Send(request, cancellationToken);
-                return Ok(department);
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+                Id = Guid.Parse(RouteData.Values["id"]?.ToString() ?? string.Empty),
+            };
+
+            var department = await _mediator.Send(request, cancellationToken);
+            return Ok(department);
         }
 
         [HttpPost]
@@ -50,15 +44,8 @@ namespace Backend.Features.Academic.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                var response = await _mediator.Send(request, cancellationToken);
-                return Ok(response);
-            }
-            catch (InvalidDataException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
         }
 
         [HttpPut]
@@ -67,19 +54,8 @@ namespace Backend.Features.Academic.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                await _mediator.Send(request, cancellationToken);
-                return Ok("Department has been updated successfully.");
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
-            catch (InvalidDataException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _mediator.Send(request, cancellationToken);
+            return Ok("Department has been updated successfully.");
         }
 
         [HttpDelete]
@@ -88,15 +64,8 @@ namespace Backend.Features.Academic.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                await _mediator.Send(request, cancellationToken);
-                return Ok("Department has been deleted successfully.");
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+            await _mediator.Send(request, cancellationToken);
+            return Ok("Department has been deleted successfully.");
         }
     }
 }

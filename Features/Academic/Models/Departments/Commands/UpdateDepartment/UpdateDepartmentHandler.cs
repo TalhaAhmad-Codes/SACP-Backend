@@ -1,6 +1,7 @@
 ﻿using Backend.Features.Academic.Generators;
 using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
+using Backend.Shared.Exceptions;
 using MediatR;
 
 namespace Backend.Features.Academic.Models.Departments.Commands.UpdateDepartment
@@ -35,7 +36,7 @@ namespace Backend.Features.Academic.Models.Departments.Commands.UpdateDepartment
 
             if (existsByName)
             {
-                throw new InvalidDataException(
+                throw new InvalidRequestException(
                     $"Department with name '{request.Name}' already exists."
                 );
             }

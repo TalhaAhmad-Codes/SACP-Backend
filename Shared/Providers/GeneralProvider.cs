@@ -20,7 +20,8 @@ public abstract class GeneralProvider<T> : IGeneralProvider<T>
     public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var entity =
-            await _dbSet.FindAsync(id, cancellationToken) ?? throw new NotExistsException();
+            await _dbSet.FindAsync(id, cancellationToken)
+            ?? throw new NotExistsException(typeof(T).Name);
 
         return entity;
     }

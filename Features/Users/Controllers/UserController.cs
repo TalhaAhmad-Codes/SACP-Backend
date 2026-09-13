@@ -29,20 +29,15 @@ namespace Backend.Features.Users.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetUserByIdAsync(
-            GetUserByIdQuery request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> GetUserByIdAsync(CancellationToken cancellationToken)
         {
-            try
+            var request = new GetUserByIdQuery
             {
-                var user = await _mediator.Send(request, cancellationToken);
-                return Ok(user);
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+                Id = Guid.Parse(RouteData.Values["id"]?.ToString() ?? string.Empty),
+            };
+
+            var user = await _mediator.Send(request, cancellationToken);
+            return Ok(user);
         }
 
         [HttpPost]
@@ -51,19 +46,8 @@ namespace Backend.Features.Users.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                var user = await _mediator.Send(request, cancellationToken);
-                return Ok(user);
-            }
-            catch (InvalidRequestException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+            var user = await _mediator.Send(request, cancellationToken);
+            return Ok(user);
         }
 
         [HttpDelete]
@@ -72,15 +56,8 @@ namespace Backend.Features.Users.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                await _mediator.Send(request, cancellationToken);
-                return Ok("User has been deleted successfully");
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+            await _mediator.Send(request, cancellationToken);
+            return Ok("User has been deleted successfully");
         }
 
         [HttpPatch("update/username")]
@@ -89,15 +66,8 @@ namespace Backend.Features.Users.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                await _mediator.Send(request, cancellationToken);
-                return Ok("Username has been updated successfully");
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+            await _mediator.Send(request, cancellationToken);
+            return Ok("Username has been updated successfully");
         }
 
         [HttpPatch("update/activate")]
@@ -106,15 +76,8 @@ namespace Backend.Features.Users.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                await _mediator.Send(request, cancellationToken);
-                return Ok("User has been activated successfully");
-            }
-            catch (NotExistsException ex)
-            {
-                return NotFound();
-            }
+            await _mediator.Send(request, cancellationToken);
+            return Ok("User has been activated successfully");
         }
 
         [HttpPatch("update/deactivate")]
@@ -123,15 +86,8 @@ namespace Backend.Features.Users.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                await _mediator.Send(request, cancellationToken);
-                return Ok("User has been deactivated successfully");
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+            await _mediator.Send(request, cancellationToken);
+            return Ok("User has been deactivated successfully");
         }
     }
 }

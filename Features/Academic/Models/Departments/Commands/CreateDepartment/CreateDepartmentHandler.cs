@@ -2,6 +2,7 @@
 using Backend.Features.Academic.Models.Departments.Responses;
 using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
+using Backend.Shared.Exceptions;
 using Mapster;
 using MediatR;
 
@@ -35,7 +36,7 @@ namespace Backend.Features.Academic.Models.Departments.Commands.CreateDepartment
 
             if (existsByName)
             {
-                throw new InvalidOperationException(
+                throw new InvalidRequestException(
                     $"A department with the name '{request.Name}' already exists."
                 );
             }

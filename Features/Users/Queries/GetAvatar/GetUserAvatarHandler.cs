@@ -23,11 +23,6 @@ namespace Backend.Features.Users.Queries.GetAvatar
         {
             var user = await _userProvider.GetByIdAsync(request.Id, cancellationToken);
 
-            if (user is null)
-            {
-                throw new NotExistsException();
-            }
-
             if (user.Avatar is null || string.IsNullOrWhiteSpace(user.Avatar.ContentType))
             {
                 throw new InvalidRequestException("User has no avatar.");

@@ -21,12 +21,6 @@ namespace Backend.Features.Users.Queries.GetUserById
         )
         {
             var user = await _userProvider.GetByIdAsync(request.Id, cancellationToken);
-
-            if (user is null)
-            {
-                throw new NotExistsException();
-            }
-
             return user.Adapt<UserResponse>();
         }
     }

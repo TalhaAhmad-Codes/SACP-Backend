@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Backend.Shared.Exceptions;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Shared.Middleware
@@ -46,10 +47,34 @@ namespace Backend.Shared.Middleware
                     await context.Response.WriteAsJsonAsync(problem);
                     break;
                 }
-                //case InvalidDataException invalidDataException:
-                //{
-                //    context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                //}
+                case InvalidRequestException invalidRequestException:
+                {
+                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+
+                    var problem = new ProblemDetails
+                    {
+                        Title = "Invalid Data",
+                        Detail = invalidRequestException.Message,
+                        Status = StatusCodes.Status400BadRequest,
+                    };
+
+                    await context.Response.WriteAsJsonAsync(problem);
+                    break;
+                }
+                case NotExistsException notExistsException:
+                {
+                    context.Response.StatusCode = StatusCodes.Status404NotFound;
+
+                    var problem = new ProblemDetails
+                    {
+                        Title = "Resource Not Found",
+                        Detail = notExistsException.Message,
+                        Status = StatusCodes.Status404NotFound,
+                    };
+                    await context.Response.WriteAsJsonAsync(problem);
+
+                    break;
+                }
 
                 default:
                 {

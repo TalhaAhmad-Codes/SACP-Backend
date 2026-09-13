@@ -28,20 +28,15 @@ namespace Backend.Features.Academic.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetByIdAsync(
-            GetInstitutionByIdQuery request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> GetByIdAsync(CancellationToken cancellationToken)
         {
-            try
+            var request = new GetInstitutionByIdQuery
             {
-                var institution = await _mediator.Send(request, cancellationToken);
-                return Ok(institution);
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+                Id = Guid.Parse(RouteData.Values["id"]?.ToString() ?? string.Empty),
+            };
+
+            var institution = await _mediator.Send(request, cancellationToken);
+            return Ok(institution);
         }
 
         [HttpPost]
@@ -60,15 +55,8 @@ namespace Backend.Features.Academic.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                var institution = await _mediator.Send(request, cancellationToken);
-                return Ok(institution);
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+            var institution = await _mediator.Send(request, cancellationToken);
+            return Ok(institution);
         }
 
         [HttpDelete]
@@ -77,15 +65,8 @@ namespace Backend.Features.Academic.Controllers
             CancellationToken cancellationToken
         )
         {
-            try
-            {
-                await _mediator.Send(request, cancellationToken);
-                return Ok("Institution deleted successfully.");
-            }
-            catch (NotExistsException)
-            {
-                return NotFound();
-            }
+            await _mediator.Send(request, cancellationToken);
+            return Ok("Institution deleted successfully.");
         }
     }
 }
