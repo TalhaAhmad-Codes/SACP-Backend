@@ -1,6 +1,3 @@
-using Backend.Features.Academic.Models;
-using Backend.Features.Academic.Models.Admin;
-using Backend.Features.Academic.Models.Institution;
 using Backend.Features.Auth.Commands.Register;
 using Backend.Features.Users.Models;
 using Backend.Features.Users.Models.Enums;
@@ -26,21 +23,21 @@ namespace Backend.Features.Auth.Handlers.Commands
             CancellationToken cancellationToken
         ) => await _context.Users.AnyAsync(u => u.Email == email.Trim(), cancellationToken);
 
-        private async Task<bool> DoesInstitutionExistAsync(
+        /*private async Task<bool> DoesInstitutionExistAsync(
             string institutionName,
             CancellationToken cancellationToken
         ) =>
             await _context.Institutions.AnyAsync(
                 i => i.Name.ToLower() == institutionName.ToLower(),
                 cancellationToken
-            );
+            );*/
 
         public async Task<Guid> Handle(
             AdminRegisterCommand request,
             CancellationToken cancellationToken
         )
         {
-            // * Create User Profile
+            // Create User Profile
             var isRegistered = await ExistsByEmailAsync(request.Email, cancellationToken);
 
             if (isRegistered)
@@ -57,18 +54,17 @@ namespace Backend.Features.Auth.Handlers.Commands
                 Role = UserRole.Admin,
             };
 
-            // * Create Institution
-            var doesInstitutionExist = await DoesInstitutionExistAsync(
+            // Create Institution
+            /*var doesInstitutionExist = await DoesInstitutionExistAsync(
                 request.InstitutionName.Trim(),
                 cancellationToken
             );
 
             if (doesInstitutionExist)
                 throw new NotExistsException("Institution with this name is already registered");
-
             var institution = new Institution() { Name = request.InstitutionName.Trim() };
 
-            // * Create Admin profile
+            // Create Admin profile
             var admin = new Admin()
             {
                 Name = new()
@@ -78,12 +74,12 @@ namespace Backend.Features.Auth.Handlers.Commands
                 },
                 User = user,
                 Institution = institution,
-            };
+            };*/
 
-            // * Add data and commit transaction
+            // Add data and commit transaction
             await _context.Users.AddAsync(user);
-            await _context.Institutions.AddAsync(institution);
-            await _context.Admins.AddAsync(admin);
+            /*await _context.Institutions.AddAsync(institution);
+            await _context.Admins.AddAsync(admin);*/
 
             await _context.SaveChangesAsync(cancellationToken);
 

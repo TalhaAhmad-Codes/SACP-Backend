@@ -1,4 +1,3 @@
-using Backend.Features.Academic.Models.FacultyMember;
 using Backend.Features.Auth.Commands.Register;
 using Backend.Features.Users.Models;
 using Backend.Features.Users.Models.Enums;
@@ -24,21 +23,22 @@ namespace Backend.Features.Auth.Handlers.Commands
             CancellationToken cancellationToken
         ) => await _context.Users.AnyAsync(u => u.Email == email, cancellationToken);
 
-        private async Task<FacultyMember?> GetFacultyByEmailAsync(
+        /*private async Task<FacultyMember?> GetFacultyByEmailAsync(
             string email,
             CancellationToken cancellationToken
         ) =>
             await _context.FacultyMembers.FirstOrDefaultAsync(
                 fm => fm.Email == email,
                 cancellationToken
-            );
+            );*/
 
         public async Task<Guid> Handle(
             FacultyRegisterCommand request,
             CancellationToken cancellationToken
         )
         {
-            // * Check access code
+            throw new NotImplementedException();
+            /*// Check access code
             var faculty = await GetFacultyByEmailAsync(request.Email.Trim(), cancellationToken);
 
             if (faculty is null)
@@ -76,7 +76,7 @@ namespace Backend.Features.Auth.Handlers.Commands
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return user.Id;
+            return user.Id;*/
         }
     }
 }

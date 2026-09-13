@@ -1,6 +1,7 @@
+using Backend.Shared.Common.DTOs;
 using MediatR;
 
 namespace Backend.Features.Users.Commands.DeactiveUser
 {
-    public sealed record DeactivateUserCommand(Guid UserId) : IRequest<Unit>;
+    public sealed class DeactivateUserCommand : BaseDto, IRequest<Unit> { }
 }

@@ -8,12 +8,12 @@ namespace Backend.Shared.Extensions
         {
             services.AddEndpointsApiExplorer();
 
-            // ? Configure Swagger generation with custom settings, including API information and security definitions for JWT authentication.
+            // Configure Swagger generation with custom settings, including API information and security definitions for JWT authentication.
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "SACP API", Version = "v1" });
 
-                // * Add a security definition for JWT Bearer authentication, specifying the expected format and location of the authorization header.
+                // Add a security definition for JWT Bearer authentication, specifying the expected format and location of the authorization header.
                 options.AddSecurityDefinition(
                     "Bearer",
                     new OpenApiSecurityScheme
@@ -27,7 +27,7 @@ namespace Backend.Shared.Extensions
                     }
                 );
 
-                // * Then, add a security requirement to ensure that the defined security scheme is applied to all API endpoints.
+                // Then, add a security requirement to ensure that the defined security scheme is applied to all API endpoints.
                 options.AddSecurityRequirement(
                     new OpenApiSecurityRequirement
                     {

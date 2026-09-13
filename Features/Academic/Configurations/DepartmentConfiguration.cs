@@ -1,5 +1,5 @@
-using Backend.Features.Academic.Models.Department;
-using Backend.Shared.Common.FixedValue;
+﻿using Backend.Features.Academic.Models.Departments;
+using Backend.Shared.Common.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,27 +9,19 @@ namespace Backend.Features.Academic.Configurations
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {
-            // * Name
+            // Name
             builder.Property(d => d.Name).HasMaxLength(MaxValue.DepartmentName).IsRequired();
+            builder.HasIndex(d => d.Name).IsUnique();
 
-            // * Label
-            builder.Property(d => d.Label).IsRequired();
+            // Description
+            builder.Property(d => d.Description).HasMaxLength(MaxValue.Description);
 
-            // * Institution - Relationship
+            // Relationship with institution
             builder
                 .HasOne(d => d.Institution)
                 .WithMany(i => i.Departments)
                 .HasForeignKey(d => d.InstitutionId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            // * Faculty Member - Relationship
-            builder.HasMany(d => d.FacultyMembers).WithOne(fm => fm.Department);
-
-            // * Students - Relationship
-            builder.HasMany(d => d.Students).WithOne(s => s.Department);
-
-            // * Course - Relationship
-            builder.HasMany(d => d.Courses).WithOne(c => c.Department);
         }
     }
 }

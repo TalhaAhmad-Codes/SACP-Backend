@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Shared.Providers;
 
-public abstract class GeneralProvider<T> : IGeneralProvider<T> where T : class
+public abstract class GeneralProvider<T> : IGeneralProvider<T>
+    where T : class
 {
     protected readonly ApplicationDbContext _context;
     protected readonly DbSet<T> _dbSet;
@@ -18,10 +19,9 @@ public abstract class GeneralProvider<T> : IGeneralProvider<T> where T : class
 
     public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var entity = await _dbSet.FindAsync(id, cancellationToken);
-
-        if (entity is null)
-            throw new NotExistsException();
+        var entity =
+            await _dbSet.FindAsync(id, cancellationToken)
+            ?? throw new NotExistsException(typeof(T).Name);
 
         return entity;
     }

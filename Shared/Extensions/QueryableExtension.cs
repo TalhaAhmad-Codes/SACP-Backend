@@ -1,16 +1,18 @@
-using Backend.Shared.Common.Pagination;
+using Backend.Shared.Common.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Shared.Extensions;
 
 public static class QueryableExtensions
 {
-    public static async Task<PagedResult<T>> ToPagedResultAsync<T>(
+    // Method to get paged result from an IQueryable<T> source
+    public static async Task<PagedResultDto<T>> ToPagedResultAsync<T>(
         this IQueryable<T> query,
         int pageNumber,
         int pageSize,
         CancellationToken cancellationToken = default
     )
+        where T : class
     {
         var totalCount = await query.CountAsync(cancellationToken);
 
@@ -19,6 +21,6 @@ public static class QueryableExtensions
             .Take(pageSize)
             .ToListAsync(cancellationToken);
 
-        return new PagedResult<T>(items, totalCount);
+        return new() { Items = items, TotalCount = totalCount };
     }
 }

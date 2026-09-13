@@ -10,7 +10,7 @@ namespace Backend.Shared.Extensions
             IConfiguration configuration
         )
         {
-            // * Register the ApplicationDbContext with the dependency injection container, configuring it to use PostgreSQL with the connection string from the configuration.
+            // Register the ApplicationDbContext with the dependency injection container, configuring it to use PostgreSQL with the connection string from the configuration.
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));

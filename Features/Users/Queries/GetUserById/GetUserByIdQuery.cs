@@ -1,7 +1,8 @@
 using Backend.Features.Users.Responses;
+using Backend.Shared.Common.DTOs;
 using MediatR;
 
 namespace Backend.Features.Users.Queries.GetUserById
 {
-    public sealed record GetUserByIdQuery(Guid UserId) : IRequest<UserResponse>;
+    public sealed class GetUserByIdQuery : BaseDto, IRequest<UserResponse> { }
 }

@@ -17,7 +17,7 @@ namespace Backend.Features.Academic.Generators
             Year = year;
         }
 
-        // ? This method takes DB context and some information and then generates a unique access code for the faculty member.
+        /*// This method takes DB context and some information and then generates a unique access code for the faculty member.
         public static async Task<AccessCode> Generate(ApplicationDbContext context, DateOnly dateOfJoin, Guid departmentId
         )
         {
@@ -38,7 +38,7 @@ namespace Backend.Features.Academic.Generators
             var year = dateOfJoin.Year;
 
             return new AccessCode(label, count, year);
-        }
+        }*/
 
         public override string ToString()
         {

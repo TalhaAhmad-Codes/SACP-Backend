@@ -1,4 +1,3 @@
-using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
 using Backend.Shared.Exceptions;
 
@@ -11,7 +10,12 @@ namespace Backend.Features.Academic.Generators
         public int YearOfAdmission { get; }
         public int RollNumber { get; }
 
-        private RegistrationNumber(string institutionLabel, string departmentLabel, int yearOfAdmission, int rollNumber)
+        private RegistrationNumber(
+            string institutionLabel,
+            string departmentLabel,
+            int yearOfAdmission,
+            int rollNumber
+        )
         {
             InstitutionLabel = institutionLabel;
             DepartmentLabel = departmentLabel;
@@ -19,16 +23,16 @@ namespace Backend.Features.Academic.Generators
             RollNumber = rollNumber;
         }
 
-        // ? This method generates a unique registration number for the student
+        /*// This method generates a unique registration number for the student
         public static async Task<RegistrationNumber> Generate(IInstitutionProvider institutionProvider, IDepartmentProvider departmentProvider, Guid departmentId, int yearOfAdmission, int rollNumber)
         {
-            // * Get Department
+            // Get Department
             var department = await departmentProvider.GetByIdAsync(departmentId);
 
-            // * Get Institution
+            // Get Institution
             var institution = await institutionProvider.GetByIdAsync(department.InstitutionId);
 
-            // * Generate the registration number
+            // Generate the registration number
             var institutionLabel = institution.Name.Substring(0, 3);
             var departmentLabel = department.Name.Substring(0, 3) + department.Label.ToString();
 
@@ -40,9 +44,9 @@ namespace Backend.Features.Academic.Generators
             );
 
             return registrationNumber;
-        }
+        }*/
 
-        // * Method to get the number as string
+        // Method to get the number as string
         public override string ToString()
         {
             return $"{InstitutionLabel}-{DepartmentLabel}-{YearOfAdmission}-{RollNumber}";
