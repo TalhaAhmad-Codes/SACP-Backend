@@ -4,5 +4,5 @@ using MediatR;
 
 namespace Backend.Features.Users.Queries.GetUserById
 {
-    public sealed class GetUserByIdQuery : BaseDto, IRequest<UserResponse> { }
+    public sealed class GetUserByIdQuery : BaseDto, IRequest<UserResponseDto> { }
 }

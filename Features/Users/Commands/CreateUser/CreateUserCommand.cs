@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Backend.Features.Users.Commands.CreateUser
 {
-    public sealed class CreateUserCommand : IRequest<UserResponse>
+    public sealed class CreateUserCommand : IRequest<UserResponseDto>
     {
         public string Username { get; init; }
         public string Email { get; init; }

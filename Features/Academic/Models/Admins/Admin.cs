@@ -7,6 +7,7 @@ namespace Backend.Features.Academic.Models.Admins
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
         public Guid UserId { get; set; }
         public User User { get; set; }
     }

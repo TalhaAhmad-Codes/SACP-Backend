@@ -1,3 +1,4 @@
+using Backend.Features.Academic.Providers.Interfaces;
 using Backend.Infrastructure.Persistence;
 using Backend.Shared.Exceptions;
 
@@ -23,8 +24,14 @@ namespace Backend.Features.Academic.Generators
             RollNumber = rollNumber;
         }
 
-        /*// This method generates a unique registration number for the student
-        public static async Task<RegistrationNumber> Generate(IInstitutionProvider institutionProvider, IDepartmentProvider departmentProvider, Guid departmentId, int yearOfAdmission, int rollNumber)
+        // This method generates a unique registration number for the student
+        public static async Task<RegistrationNumber> Generate(
+            IInstitutionProvider institutionProvider,
+            IDepartmentProvider departmentProvider,
+            Guid departmentId,
+            int yearOfAdmission,
+            int rollNumber
+        )
         {
             // Get Department
             var department = await departmentProvider.GetByIdAsync(departmentId);
@@ -33,8 +40,8 @@ namespace Backend.Features.Academic.Generators
             var institution = await institutionProvider.GetByIdAsync(department.InstitutionId);
 
             // Generate the registration number
-            var institutionLabel = institution.Name.Substring(0, 3);
-            var departmentLabel = department.Name.Substring(0, 3) + department.Label.ToString();
+            var institutionLabel = institution.Name.Substring(0, 3).ToUpper();
+            var departmentLabel = department.Name.Substring(0, 3).ToUpper() + department.Code;
 
             var registrationNumber = new RegistrationNumber(
                 institutionLabel,
@@ -44,7 +51,7 @@ namespace Backend.Features.Academic.Generators
             );
 
             return registrationNumber;
-        }*/
+        }
 
         // Method to get the number as string
         public override string ToString()

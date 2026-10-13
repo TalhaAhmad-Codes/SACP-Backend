@@ -6,7 +6,7 @@ namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartments
 {
     public sealed class GetDepartmentsQuery
         : BasePagedQuery,
-            IRequest<PagedResultDto<DepartmentResponse>>
+            IRequest<PagedResultDto<DepartmentResponseDto>>
     {
         public Guid? InstitutionId { get; init; }
         public string? Name { get; init; }

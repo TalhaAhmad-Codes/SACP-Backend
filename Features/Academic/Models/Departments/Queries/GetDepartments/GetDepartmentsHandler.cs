@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartments
 {
     public sealed class GetDepartmentsHandler
-        : IRequestHandler<GetDepartmentsQuery, PagedResultDto<DepartmentResponse>>
+        : IRequestHandler<GetDepartmentsQuery, PagedResultDto<DepartmentResponseDto>>
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,7 +18,7 @@ namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartments
             _context = context;
         }
 
-        public async Task<PagedResultDto<DepartmentResponse>> Handle(
+        public async Task<PagedResultDto<DepartmentResponseDto>> Handle(
             GetDepartmentsQuery request,
             CancellationToken cancellationToken
         )
@@ -34,12 +34,12 @@ namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartments
                 query = query.Where(d => d.InstitutionId == request.InstitutionId.Value);
 
             // Perform pagination
-            var departmentsResponse = await query
+            var response = await query
                 .OrderBy(d => d.Name)
-                .ProjectToType<DepartmentResponse>()
+                .ProjectToType<DepartmentResponseDto>()
                 .ToPagedResultAsync(request.PageNumber, request.PageSize, cancellationToken);
 
-            return departmentsResponse;
+            return response;
         }
     }
 }

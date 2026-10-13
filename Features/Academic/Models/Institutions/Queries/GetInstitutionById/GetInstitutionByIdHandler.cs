@@ -7,7 +7,7 @@ using MediatR;
 namespace Backend.Features.Academic.Models.Institutions.Queries.GetInstitutionById
 {
     public sealed class GetInstitutionByIdHandler
-        : IRequestHandler<GetInstitutionByIdQuery, InstitutionResponse>
+        : IRequestHandler<GetInstitutionByIdQuery, InstitutionResponseDto>
     {
         private readonly IInstitutionProvider _institutionProvider;
 
@@ -16,7 +16,7 @@ namespace Backend.Features.Academic.Models.Institutions.Queries.GetInstitutionBy
             _institutionProvider = provider;
         }
 
-        public async Task<InstitutionResponse> Handle(
+        public async Task<InstitutionResponseDto> Handle(
             GetInstitutionByIdQuery request,
             CancellationToken cancellationToken
         )
@@ -28,7 +28,7 @@ namespace Backend.Features.Academic.Models.Institutions.Queries.GetInstitutionBy
             );
 
             // Return the institution
-            return institution.Adapt<InstitutionResponse>();
+            return institution.Adapt<InstitutionResponseDto>();
         }
     }
 }

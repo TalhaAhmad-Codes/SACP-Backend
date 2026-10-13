@@ -9,7 +9,7 @@ using MediatR;
 namespace Backend.Features.Academic.Models.Departments.Commands.CreateDepartment
 {
     public sealed class CreateDepartmentHandler
-        : IRequestHandler<CreateDepartmentCommand, DepartmentResponse>
+        : IRequestHandler<CreateDepartmentCommand, DepartmentResponseDto>
     {
         private readonly ApplicationDbContext _context;
         private readonly IDepartmentProvider _departmentProvider;
@@ -23,7 +23,7 @@ namespace Backend.Features.Academic.Models.Departments.Commands.CreateDepartment
             _departmentProvider = departmentProvider;
         }
 
-        public async Task<DepartmentResponse> Handle(
+        public async Task<DepartmentResponseDto> Handle(
             CreateDepartmentCommand request,
             CancellationToken cancellationToken
         )
@@ -57,11 +57,11 @@ namespace Backend.Features.Academic.Models.Departments.Commands.CreateDepartment
             };
 
             // Add the department to the database
-            _context.Departments.Add(department);
+            await _context.Departments.AddAsync(department);
             await _context.SaveChangesAsync(cancellationToken);
 
             // Return the created department as a response
-            return department.Adapt<DepartmentResponse>();
+            return department.Adapt<DepartmentResponseDto>();
         }
     }
 }

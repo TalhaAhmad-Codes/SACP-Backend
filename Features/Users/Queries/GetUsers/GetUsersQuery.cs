@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Backend.Features.Users.Queries.GetUsers
 {
-    public sealed class GetUsersQuery : BasePagedQuery, IRequest<PagedResultDto<UserResponse>>
+    public sealed class GetUsersQuery : BasePagedQuery, IRequest<PagedResultDto<UserResponseDto>>
     {
         public string? Username { get; init; } = null;
         public UserRole? Role { get; init; } = null;

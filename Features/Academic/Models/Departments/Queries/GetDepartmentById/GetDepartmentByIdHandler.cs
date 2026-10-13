@@ -6,7 +6,7 @@ using MediatR;
 namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartmentById
 {
     public sealed class GetDepartmentByIdHandler
-        : IRequestHandler<GetDepartmentByIdQuery, DepartmentResponse>
+        : IRequestHandler<GetDepartmentByIdQuery, DepartmentResponseDto>
     {
         private readonly IDepartmentProvider _departmentProvider;
 
@@ -15,7 +15,7 @@ namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartmentById
             _departmentProvider = departmentProvider;
         }
 
-        public async Task<DepartmentResponse> Handle(
+        public async Task<DepartmentResponseDto> Handle(
             GetDepartmentByIdQuery request,
             CancellationToken cancellationToken
         )
@@ -24,7 +24,7 @@ namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartmentById
             var department = await _departmentProvider.GetByIdAsync(request.Id, cancellationToken);
 
             // Return response
-            return department.Adapt<DepartmentResponse>();
+            return department.Adapt<DepartmentResponseDto>();
         }
     }
 }

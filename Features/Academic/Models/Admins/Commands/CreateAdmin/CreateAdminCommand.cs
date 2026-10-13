@@ -3,10 +3,11 @@ using MediatR;
 
 namespace Backend.Features.Academic.Models.Admins.Commands.CreateAdmin
 {
-    public sealed class CreateAdminCommand : IRequest<AdminResponse>
+    public sealed class CreateAdminCommand : IRequest<AdminResponseDto>
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Guid UserId { get; set; }
+        public string FirstName { get; init; }
+        public string LastName { get; init; }
+        public Guid UserId { get; init; }
+        public Guid InstitutionId { get; init; }
     }
 }

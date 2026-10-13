@@ -8,7 +8,7 @@ using MediatR;
 namespace Backend.Features.Academic.Models.Institutions.Commands.CreateInstitution
 {
     public sealed class CreateInstitutionHandler
-        : IRequestHandler<CreateInstitutionCommand, InstitutionResponse>
+        : IRequestHandler<CreateInstitutionCommand, InstitutionResponseDto>
     {
         private readonly ApplicationDbContext _context;
         private readonly IInstitutionProvider _institutionProvider;
@@ -22,7 +22,7 @@ namespace Backend.Features.Academic.Models.Institutions.Commands.CreateInstituti
             _institutionProvider = institutionProvider;
         }
 
-        public async Task<InstitutionResponse> Handle(
+        public async Task<InstitutionResponseDto> Handle(
             CreateInstitutionCommand request,
             CancellationToken cancellationToken
         )
@@ -41,7 +41,7 @@ namespace Backend.Features.Academic.Models.Institutions.Commands.CreateInstituti
             await _context.Institutions.AddAsync(institution, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return institution.Adapt<InstitutionResponse>();
+            return institution.Adapt<InstitutionResponseDto>();
         }
     }
 }

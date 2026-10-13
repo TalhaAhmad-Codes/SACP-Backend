@@ -17,8 +17,11 @@ namespace Backend.Features.Academic.Generators
             Year = year;
         }
 
-        /*// This method takes DB context and some information and then generates a unique access code for the faculty member.
-        public static async Task<AccessCode> Generate(ApplicationDbContext context, DateOnly dateOfJoin, Guid departmentId
+        // This method takes DB context and some information and then generates a unique access code for the faculty member.
+        public static async Task<AccessCode> Generate(
+            ApplicationDbContext context,
+            DateOnly dateOfJoin,
+            Guid departmentId
         )
         {
             // * Get the department
@@ -29,16 +32,17 @@ namespace Backend.Features.Academic.Generators
                 throw new NotExistsException("Department doesn't exist");
 
             // * Generate the access code
-            var label = department.Name.Substring(0, 3) + department.Label;
+            //var label = department.Name.Substring(0, 3) + department.Code;
+
             var facultyMembers = context
-                .FacultyMembers.AsQueryable()
-                .AsNoTracking() // ? Prevention of tracking to increase performance
+                .FacultyMembers.AsNoTracking() // ? Prevention of tracking to increase performance
                 .Where(fm => fm.DateOfJoining.Year == dateOfJoin.Year);
+
             var count = await facultyMembers.CountAsync();
             var year = dateOfJoin.Year;
 
-            return new AccessCode(label, count, year);
-        }*/
+            return new AccessCode(department.Code, count, year);
+        }
 
         public override string ToString()
         {

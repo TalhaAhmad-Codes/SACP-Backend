@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Backend.Features.Users.Queries.GetUserById
 {
-    public sealed class GetUserByIdHandler : IRequestHandler<GetUserByIdQuery, UserResponse>
+    public sealed class GetUserByIdHandler : IRequestHandler<GetUserByIdQuery, UserResponseDto>
     {
         private readonly IUserProvider _userProvider;
 
@@ -15,13 +15,13 @@ namespace Backend.Features.Users.Queries.GetUserById
             _userProvider = userProvider;
         }
 
-        public async Task<UserResponse> Handle(
+        public async Task<UserResponseDto> Handle(
             GetUserByIdQuery request,
             CancellationToken cancellationToken
         )
         {
             var user = await _userProvider.GetByIdAsync(request.Id, cancellationToken);
-            return user.Adapt<UserResponse>();
+            return user.Adapt<UserResponseDto>();
         }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Features.Academic.Models.Institutions.Queries.GetInstitutions
 {
     public sealed class GetInstitutionsHandler
-        : IRequestHandler<GetInstitutionsQuery, PagedResultDto<InstitutionResponse>>
+        : IRequestHandler<GetInstitutionsQuery, PagedResultDto<InstitutionResponseDto>>
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,7 +18,7 @@ namespace Backend.Features.Academic.Models.Institutions.Queries.GetInstitutions
             _context = context;
         }
 
-        public async Task<PagedResultDto<InstitutionResponse>> Handle(
+        public async Task<PagedResultDto<InstitutionResponseDto>> Handle(
             GetInstitutionsQuery request,
             CancellationToken cancellationToken
         )
@@ -33,7 +33,7 @@ namespace Backend.Features.Academic.Models.Institutions.Queries.GetInstitutions
             // Paging
             var institutions = await query
                 .OrderBy(i => i.Name)
-                .ProjectToType<InstitutionResponse>()
+                .ProjectToType<InstitutionResponseDto>()
                 .ToPagedResultAsync(request.PageNumber, request.PageSize, cancellationToken);
 
             return institutions;

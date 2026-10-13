@@ -27,11 +27,15 @@ namespace Backend.Features.Academic.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetByIdAsync(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetByIdAsync(
+            [FromRoute] Guid id,
+            CancellationToken cancellationToken
+        )
         {
             var request = new GetDepartmentByIdQuery
             {
-                Id = Guid.Parse(RouteData.Values["id"]?.ToString() ?? string.Empty),
+                //Id = Guid.Parse(RouteData.Values["id"]?.ToString() ?? string.Empty),
+                Id = id,
             };
 
             var department = await _mediator.Send(request, cancellationToken);

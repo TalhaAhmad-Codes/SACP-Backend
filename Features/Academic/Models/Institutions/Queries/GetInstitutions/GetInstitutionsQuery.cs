@@ -6,7 +6,7 @@ namespace Backend.Features.Academic.Models.Institutions.Queries.GetInstitutions
 {
     public sealed class GetInstitutionsQuery
         : BasePagedQuery,
-            IRequest<PagedResultDto<InstitutionResponse>>
+            IRequest<PagedResultDto<InstitutionResponseDto>>
     {
         public string? Name { get; init; }
     }

@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Backend.Features.Users.Commands.CreateUser
 {
-    public sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, UserResponse>
+    public sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, UserResponseDto>
     {
         private readonly ApplicationDbContext _context;
         private readonly IUserProvider _userProvider;
@@ -20,7 +20,7 @@ namespace Backend.Features.Users.Commands.CreateUser
             _userProvider = userProvider;
         }
 
-        public async Task<UserResponse> Handle(
+        public async Task<UserResponseDto> Handle(
             CreateUserCommand request,
             CancellationToken cancellationToken
         )
@@ -46,7 +46,7 @@ namespace Backend.Features.Users.Commands.CreateUser
             await _context.AddAsync(user);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return user.Adapt<UserResponse>();
+            return user.Adapt<UserResponseDto>();
         }
     }
 }

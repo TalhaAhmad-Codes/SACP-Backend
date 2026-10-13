@@ -2,7 +2,7 @@
 
 namespace Backend.Features.Academic.Models.Admins.Responses
 {
-    public sealed class AdminResponse : BaseInstitutionDto
+    public sealed class AdminResponseDto : BaseInstitutionDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

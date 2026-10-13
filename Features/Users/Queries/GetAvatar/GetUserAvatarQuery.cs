@@ -4,5 +4,5 @@ using MediatR;
 
 namespace Backend.Features.Users.Queries.GetAvatar
 {
-    public sealed class GetUserAvatarQuery : BaseDto, IRequest<UserAvatarResponse> { }
+    public sealed class GetUserAvatarQuery : BaseDto, IRequest<UserAvatarResponseDto> { }
 }

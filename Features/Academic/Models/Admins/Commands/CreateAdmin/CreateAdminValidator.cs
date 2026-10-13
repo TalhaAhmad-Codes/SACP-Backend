@@ -15,6 +15,8 @@ namespace Backend.Features.Academic.Models.Admins.Commands.CreateAdmin
                 .RequiredString("Last name", MinValue.PersonName, MaxValue.PersonName);
 
             RuleFor(a => a.UserId).RequiredId("User");
+
+            RuleFor(a => a.InstitutionId).RequiredId("Institution");
         }
     }
 }

@@ -4,5 +4,5 @@ using MediatR;
 
 namespace Backend.Features.Academic.Models.Departments.Queries.GetDepartmentById
 {
-    public sealed class GetDepartmentByIdQuery : BaseDto, IRequest<DepartmentResponse> { }
+    public sealed class GetDepartmentByIdQuery : BaseDto, IRequest<DepartmentResponseDto> { }
 }

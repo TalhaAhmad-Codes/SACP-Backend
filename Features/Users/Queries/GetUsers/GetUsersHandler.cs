@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Features.Users.Queries.GetUsers
 {
     public sealed class GetUsersHandler
-        : IRequestHandler<GetUsersQuery, PagedResultDto<UserResponse>>
+        : IRequestHandler<GetUsersQuery, PagedResultDto<UserResponseDto>>
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,7 +18,7 @@ namespace Backend.Features.Users.Queries.GetUsers
             _context = context;
         }
 
-        public async Task<PagedResultDto<UserResponse>> Handle(
+        public async Task<PagedResultDto<UserResponseDto>> Handle(
             GetUsersQuery request,
             CancellationToken cancellationToken
         )
@@ -38,7 +38,7 @@ namespace Backend.Features.Users.Queries.GetUsers
             // Paging
             var users = await query
                 .OrderBy(u => u.Username)
-                .ProjectToType<UserResponse>()
+                .ProjectToType<UserResponseDto>()
                 .ToPagedResultAsync(request.PageNumber, request.PageSize, cancellationToken);
 
             return users;

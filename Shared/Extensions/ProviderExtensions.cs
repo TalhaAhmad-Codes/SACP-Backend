@@ -15,10 +15,12 @@ public static class ProviderExtensions
         /* <----- Academic Data -----> */
         services.AddScoped<IInstitutionProvider, InstitutionProvider>();
         services.AddScoped<IDepartmentProvider, DepartmentProvider>();
-        /*services.AddScoped<IAdminProvider, AdminProvider>();
+        services.AddScoped<IAdminProvider, AdminProvider>();
         services.AddScoped<IFacultyMemberProvider, FacultyMemberProvider>();
         services.AddScoped<IStudentProvider, StudentProvider>();
-        services.AddScoped<ICourseProvider, CourseProvider>();
+        services.AddScoped<IDegreeProvider, DegreeProvider>();
+        services.AddScoped<ISessionProvider, SessionProvider>();
+        /*services.AddScoped<ICourseProvider, CourseProvider>();
         services.AddScoped<ICourseAssignmentProvider, CourseAssignmentProvider>();
         services.AddScoped<IExamProvider, ExamProvider>();
         services.AddScoped<IExamResultProvider, ExamResultProvider>();

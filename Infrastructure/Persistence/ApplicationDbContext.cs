@@ -1,5 +1,10 @@
+using Backend.Features.Academic.Models.Admins;
+using Backend.Features.Academic.Models.Degrees;
 using Backend.Features.Academic.Models.Departments;
+using Backend.Features.Academic.Models.FacultyMembers;
 using Backend.Features.Academic.Models.Institutions;
+using Backend.Features.Academic.Models.Sessions;
+using Backend.Features.Academic.Models.Students;
 using Backend.Features.Users.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,10 +29,12 @@ namespace Backend.Infrastructure.Persistence
         /* <----- Academic -----> */
         public DbSet<Institution> Institutions => Set<Institution>();
         public DbSet<Department> Departments => Set<Department>();
-        /*public DbSet<Admin> Admins => Set<Admin>();
+        public DbSet<Admin> Admins => Set<Admin>();
         public DbSet<FacultyMember> FacultyMembers => Set<FacultyMember>();
         public DbSet<Student> Students => Set<Student>();
-        public DbSet<Course> Courses => Set<Course>();
+        public DbSet<Degree> Degrees => Set<Degree>();
+        public DbSet<Session> Sessions => Set<Session>();
+        /*public DbSet<Course> Courses => Set<Course>();
         public DbSet<CourseEnrollment> CourseEnrollments => Set<CourseEnrollment>();
         public DbSet<CourseAssignment> CourseAssignments => Set<CourseAssignment>();
         public DbSet<Attendance> Attendances => Set<Attendance>();

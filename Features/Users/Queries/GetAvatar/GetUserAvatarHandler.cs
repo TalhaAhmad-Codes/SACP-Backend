@@ -7,7 +7,7 @@ using MediatR;
 namespace Backend.Features.Users.Queries.GetAvatar
 {
     public sealed class GetUserAvatarHandler
-        : IRequestHandler<GetUserAvatarQuery, UserAvatarResponse>
+        : IRequestHandler<GetUserAvatarQuery, UserAvatarResponseDto>
     {
         private readonly IUserProvider _userProvider;
 
@@ -16,7 +16,7 @@ namespace Backend.Features.Users.Queries.GetAvatar
             _userProvider = userProvider;
         }
 
-        public async Task<UserAvatarResponse> Handle(
+        public async Task<UserAvatarResponseDto> Handle(
             GetUserAvatarQuery request,
             CancellationToken cancellationToken
         )
@@ -28,7 +28,7 @@ namespace Backend.Features.Users.Queries.GetAvatar
                 throw new InvalidRequestException("User has no avatar.");
             }
 
-            return user.Adapt<UserAvatarResponse>();
+            return user.Adapt<UserAvatarResponseDto>();
         }
     }
 }
