@@ -1,4 +1,5 @@
-﻿using Backend.Features.Academic.Models.Departments;
+﻿using Backend.Features.Academic.Models.Courses;
+using Backend.Features.Academic.Models.Departments;
 using Backend.Features.Academic.Models.Students;
 using Backend.Shared.Common.Entities;
 
@@ -13,5 +14,6 @@ namespace Backend.Features.Academic.Models.Degrees
         public Department Department { get; set; }
 
         public ICollection<Student> Students { get; set; }
+        public ICollection<Course> Courses { get; set; }
     }
 }
