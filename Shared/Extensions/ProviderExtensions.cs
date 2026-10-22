@@ -20,8 +20,9 @@ public static class ProviderExtensions
         services.AddScoped<IStudentProvider, StudentProvider>();
         services.AddScoped<IDegreeProvider, DegreeProvider>();
         services.AddScoped<ISessionProvider, SessionProvider>();
-        /*services.AddScoped<ICourseProvider, CourseProvider>();
-        services.AddScoped<ICourseAssignmentProvider, CourseAssignmentProvider>();
+        services.AddScoped<ICourseProvider, CourseProvider>();
+        services.AddScoped<ICourseEnrollmentProvider, CourseEnrollmentProvider>();
+        /*services.AddScoped<ICourseAssignmentProvider, CourseAssignmentProvider>();
         services.AddScoped<IExamProvider, ExamProvider>();
         services.AddScoped<IExamResultProvider, ExamResultProvider>();
         services.AddScoped<ILectureProvider, LectureProvider>();*/

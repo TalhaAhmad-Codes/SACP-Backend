@@ -1,4 +1,5 @@
-﻿using Backend.Features.Academic.Models.Degrees;
+﻿using Backend.Features.Academic.Models.CourseEnrollments;
+using Backend.Features.Academic.Models.Degrees;
 using Backend.Shared.Common.Entities;
 
 namespace Backend.Features.Academic.Models.Courses
@@ -12,5 +13,7 @@ namespace Backend.Features.Academic.Models.Courses
 
         public Guid DegreeId { get; set; }
         public Degree Degree { get; set; }
+
+        public ICollection<CourseEnrollment> CourseEnrollments { get; set; }
     }
 }

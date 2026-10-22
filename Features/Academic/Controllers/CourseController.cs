@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Features.Academic.Controllers
 {
-    [Route("api/[component]")]
+    [Route("api/[controller]")]
     [ApiController]
     public sealed class CourseController : BaseController
     {

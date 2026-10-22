@@ -1,4 +1,5 @@
 using Backend.Features.Academic.Models.Admins;
+using Backend.Features.Academic.Models.CourseEnrollments;
 using Backend.Features.Academic.Models.Courses;
 using Backend.Features.Academic.Models.Degrees;
 using Backend.Features.Academic.Models.Departments;
@@ -36,8 +37,8 @@ namespace Backend.Infrastructure.Persistence
         public DbSet<Degree> Degrees => Set<Degree>();
         public DbSet<Session> Sessions => Set<Session>();
         public DbSet<Course> Courses => Set<Course>();
-        /*public DbSet<CourseEnrollment> CourseEnrollments => Set<CourseEnrollment>();
-        public DbSet<CourseAssignment> CourseAssignments => Set<CourseAssignment>();
+        public DbSet<CourseEnrollment> CourseEnrollments => Set<CourseEnrollment>();
+        /*public DbSet<CourseAssignment> CourseAssignments => Set<CourseAssignment>();
         public DbSet<Attendance> Attendances => Set<Attendance>();
         public DbSet<Exam> Exams => Set<Exam>();
         public DbSet<ExamResult> ExamResults => Set<ExamResult>();

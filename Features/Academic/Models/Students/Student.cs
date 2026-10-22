@@ -1,4 +1,5 @@
-﻿using Backend.Features.Academic.Models.Degrees;
+﻿using Backend.Features.Academic.Models.CourseEnrollments;
+using Backend.Features.Academic.Models.Degrees;
 using Backend.Features.Academic.Models.Departments;
 using Backend.Features.Academic.Models.Students.Enums;
 using Backend.Features.Users.Models;
@@ -25,5 +26,7 @@ namespace Backend.Features.Academic.Models.Students
 
         public Guid DegreeId { get; set; }
         public Degree Degree { get; set; }
+
+        public ICollection<CourseEnrollment> CourseEnrollments { get; set; }
     }
 }

@@ -90,6 +90,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Dashboard\Admin\" />
+    <Folder Include="Features\Dashboard\FacultyMember\" />
+    <Folder Include="Features\Dashboard\Student\" />
+    <Folder Include="Features\Dashboard\Shared\" />
     <Folder Include="Tests\" />
   </ItemGroup>
 
